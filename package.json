@@ -1,6 +1,6 @@
 {
   "name": "@cardbrother/nestjs-tencent-cloud-sdk",
-  "version": "0.2.0",
+  "version": "0.2.1-alpha.0",
   "description": "nestjs tencent cloud sdk",
   "author": "guotingchaopr@gmail.com",
   "license": "MIT",
