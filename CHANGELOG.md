@@ -6,7 +6,8 @@
 
 - add workflow
 - add new workflow
-- add status badge
+- add npm packaging version badge
+- add github action CI badge
 
 ## 0.2.1-alpha.0
 
