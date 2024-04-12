@@ -3,7 +3,7 @@ name: Sync README with CHANGELOG
 on:
   push:
     paths:
-      - 'CHANGELOG.md'
+      - CHANGELOG.md
 
 jobs:
   sync-readme:

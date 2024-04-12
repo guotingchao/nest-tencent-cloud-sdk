@@ -6,6 +6,7 @@
 
 - add workflow
 - add new workflow
+- add status badge
 
 ## 0.2.1-alpha.0
 
