@@ -1,8 +1,16 @@
 {
+<<<<<<< HEAD
+  "name": "nestjs-tencent-cloud-sdk",
+  "version": "0.0.1",
+  "description": "nestjs tencent cloud sdk",
+  "author": "guotingchaopr@gmail.com",
+  "private": true,
+=======
   "name": "@cardbrother/nestjs-tencent-cloud-sdk",
   "version": "0.0.1",
   "description": "nestjs tencent cloud sdk",
   "author": "guotingchaopr@gmail.com",
+>>>>>>> feature/initialization
   "license": "MIT",
   "organization": "cardbrother",
   "repository": {
