@@ -1,0 +1,23 @@
+name: Sync README with CHANGELOG
+
+on:
+  push:
+    paths:
+      - 'CHANGELOG.md'
+
+jobs:
+  sync-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Update README
+        run: |
+          cat CHANGELOG.md >> README.md
+          echo '## License"
+          echo "@cardbrother/nest-tencent-cloud-sdk MIT licensed." >> README.md
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -am "Update README to reflect CHANGELOG" || echo "No changes to commit"
+          git push
