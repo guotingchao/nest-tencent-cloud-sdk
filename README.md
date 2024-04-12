@@ -34,10 +34,6 @@ $ yarn add @cardbrother/nest-tencent-cloud-sdk
 $ pnpm add @cardbrother/nest-tencent-cloud-sdk
 ```
 
-## Change Log
-
-[CHANGELOG.md](CHANGELOG.md)
-
 ## License
 
 @cardbrother/nest-tencent-cloud-sdk [MIT licensed](LICENSE).
