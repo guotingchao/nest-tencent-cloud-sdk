@@ -1,5 +1,12 @@
 # @cardbrother/nestjs-tencent-cloud-sdk
 
+## 0.2.1-alpha.1
+
+### Patch Changes
+
+- add workflow
+- add new workflow
+
 ## 0.2.1-alpha.0
 
 ### Patch Changes
