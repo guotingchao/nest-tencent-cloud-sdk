@@ -15,7 +15,7 @@ jobs:
       - name: Update README
         run: |
           cat CHANGELOG.md >> README.md
-          echo '## License"
+          echo "## License" >> README.md
           echo "@cardbrother/nest-tencent-cloud-sdk MIT licensed." >> README.md
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
