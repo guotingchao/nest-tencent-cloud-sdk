@@ -1,5 +1,5 @@
 {
-  "name": "nestjs-tencent-cloud-sdk",
+  "name": "@cardbrother/nestjs-tencent-cloud-sdk",
   "version": "0.0.1",
   "description": "nestjs tencent cloud sdk",
   "author": "guotingchaopr@gmail.com",
@@ -76,5 +76,10 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/",
+    "scope": "@cardbrother"
   }
 }
