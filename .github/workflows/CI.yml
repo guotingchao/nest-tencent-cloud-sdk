@@ -49,4 +49,5 @@ jobs:
           bun run changeset version
           bun run changeset publish
           env:
-            NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
