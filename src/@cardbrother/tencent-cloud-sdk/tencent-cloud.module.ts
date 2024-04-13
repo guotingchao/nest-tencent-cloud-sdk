@@ -1,10 +1,14 @@
-import { DynamicModule } from '@nestjs/common';
+import { DynamicModule, Module } from '@nestjs/common';
 import {
   TencentCloudModuleOptions,
   TencentCloudModuleTokenKey,
 } from './tencent-cloud.interface';
 import { TencentCloudService } from './tencent-cloud.service';
 
+@Module({
+  providers: [TencentCloudService],
+  exports: [TencentCloudService, TencentCloudModuleTokenKey],
+})
 export class TencentCloudModule {
   static forRoot(options: TencentCloudModuleOptions): DynamicModule {
     return {

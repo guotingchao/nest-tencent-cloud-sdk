@@ -4,4 +4,9 @@
 
 ## Description
 
-> A Tencent Cloud SDK for NestJS.
+> Tencent Cloud SDK for NestJS Developers
+
+- Use pnpm or bun
+- Zero config
+- support all Tencent Cloud API
+- supoort latest version of Tencent Cloud API

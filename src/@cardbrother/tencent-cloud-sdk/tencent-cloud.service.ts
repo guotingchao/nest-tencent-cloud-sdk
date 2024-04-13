@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import {
   TencentCloudModuleOptions,
   TencentCloudModuleTokenKey,
-} from './tencent-cloud.interface';
+} from '../tencent-cloud-sdk/tencent-cloud.interface';
 
 @Injectable()
 export class TencentCloudService {
@@ -11,11 +11,12 @@ export class TencentCloudService {
     @Inject(TencentCloudModuleTokenKey) options: TencentCloudModuleOptions,
   ) {
     this.options = options;
-
-    console.log('options', options);
   }
 
   public generatorClient() {
+    console.debug('🐛🐛🐛 --------------------------------🐛🐛🐛');
+    console.debug('🐛🐛🐛 ::: options:::', this.options);
+    console.debug('🐛🐛🐛 --------------------------------🐛🐛🐛');
     console.log('generatorClient');
   }
 }
