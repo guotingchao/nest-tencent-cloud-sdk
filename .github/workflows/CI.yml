@@ -12,7 +12,7 @@ jobs:
       - name: Install Bun
         run: |
           curl -fsSL https://bun.sh/install | bash
-          source /home/runner/.bashrc
+          source ~/.bashrc
 
       - name: Checkout repository
         uses: actions/checkout@v3
