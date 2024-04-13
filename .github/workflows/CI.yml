@@ -27,6 +27,8 @@ jobs:
 
       - name: Generate ChangeLog
         uses: changesets/action@v1
+         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update README
         run: |
@@ -49,5 +51,5 @@ jobs:
           bun run changeset version
           bun run changeset publish
           env:
-            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
