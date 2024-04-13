@@ -10,8 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Bun
-        run: |
-          curl -fsSL https://bun.sh/install | bash
+        run: curl -fsSL https://bun.sh/install | bash && source /home/runner/.bashrc
 
       - name: Checkout repository
         uses: actions/checkout@v3
