@@ -25,20 +25,19 @@ jobs:
 
       - name: Build
         run: |
-           bun run build
-           mkdir .changeset
-        
+          bun run build
+          mkdir .changeset
 
       - name: Generate ChangeLog
         uses: changesets/action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Commit & Push changes
+      - name: Push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          git add README.md
+          git add CHANGLOG.md
           bun run commit:changelog
 
       - name: Publish
