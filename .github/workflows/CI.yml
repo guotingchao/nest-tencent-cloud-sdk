@@ -17,31 +17,20 @@ jobs:
         with:
           node-version: 20.10.0
 
-      - uses: oven-sh/setup-bun@v1
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v1
 
       - name: Install Dependencies
         run: bun install
 
-      - name: build
+      - name: Build
         run: bun run build
 
-  changeLog:
-    needs: build
       - name: Generate ChangeLog
         uses: changesets/action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  docs:
-    needs: changeLog
-    steps:
-      - name: Update README
-        run: |
-          rm -f README.md && touch README.md
-          cat docs/Base.md >> README.md
-          cat docs/Features.md >> README.md
-          cat docs/Usage.md >> README.md
-          cat CHANGELOG.md >> README.md
-          cat docs/License.md >> README.md
+
       - name: Commit & Push changes
         run: |
           git config --local user.email "action@github.com"
@@ -49,8 +38,6 @@ jobs:
           git add README.md
           bun run commit:changelog
 
-  publish:
-    needs: docs
       - name: Publish
         run: |
           bun run changeset version
