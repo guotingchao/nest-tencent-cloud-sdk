@@ -6,7 +6,7 @@ on:
       - main
       - release/*
 jobs:
-  CI:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -25,11 +25,15 @@ jobs:
       - name: build
         run: bun run build
 
+  changeLog:
+    needs: build
       - name: Generate ChangeLog
         uses: changesets/action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+  docs:
+    needs: changeLog
+    steps:
       - name: Update README
         run: |
           rm -f README.md && touch README.md
@@ -38,7 +42,6 @@ jobs:
           cat docs/Usage.md >> README.md
           cat CHANGELOG.md >> README.md
           cat docs/License.md >> README.md
-
       - name: Commit & Push changes
         run: |
           git config --local user.email "action@github.com"
@@ -46,6 +49,8 @@ jobs:
           git add README.md
           bun run commit:changelog
 
+  publish:
+    needs: docs
       - name: Publish
         run: |
           bun run changeset version
