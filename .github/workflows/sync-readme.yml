@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - release/*
 jobs:
   sync-readme:
     runs-on: ubuntu-latest
