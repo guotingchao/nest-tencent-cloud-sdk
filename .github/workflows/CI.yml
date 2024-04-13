@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - release/*
+jobs:
+  sync-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Bun
+        run: |
+          curl -fsSL https://bun.sh/install | bash
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js 20.10.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.10.0
+
+      - name: Install Dependencies
+        run: bun install
+
+      - name: Generate ChangeLog
+        uses: changesets/action@v1
+      - name: Update README
+        run: |
+          rm -f README.md && touch README.md
+          cat docs/Base.md >> README.md
+          cat docs/Features.md >> README.md
+          cat docs/Usage.md >> README.md
+          cat CHANGELOG.md >> README.md
+          cat docs/License.md >> README.md
+      - name: Commit & Push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          git add README.md
+          bun run commit:changelog
+      - name: Publish
+        run: |
+          bun run changeset publish
+          env:
+            NPM_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}

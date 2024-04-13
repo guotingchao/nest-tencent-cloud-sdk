@@ -10,6 +10,12 @@
     "url": "https://github.com/guotingchao/nest-tencent-cloud-sdk"
   },
   "scripts": {
+    "commit:changelog": "git add CHANGELOG.md && git commit -m \"docs: :memo: update changelog\" && git push --force",
+    "release": "pnpm release:check && pnpm release:version && pnpm release:publish",
+    "release:changelog": "pnpm changeset && npm run commit:changelog",
+    "release:check": "pnpm lint",
+    "release:publish": "pnpm -r publish --tag latest",
+    "release:version": "bumpp package.json packages/*/package.json --execute=\"pnpm release:changelog\" --commit \"build: :package: publish v%s\" --all",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "ci:publish": "pnpm publish -r",
