@@ -27,7 +27,7 @@ jobs:
 
       - name: Generate ChangeLog
         uses: changesets/action@v1
-         env:
+        env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update README
