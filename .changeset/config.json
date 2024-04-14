@@ -6,7 +6,7 @@
       "repo": "guotingchao/nest-tencent-cloud-sdk"
     }
   ],
-  "commit": false,
+  "commit": true,
   "access": "public",
   "updateInternalDependencies": "patch",
   "baseBranch": "main",

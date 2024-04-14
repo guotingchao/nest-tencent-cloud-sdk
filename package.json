@@ -97,5 +97,10 @@
     "url": "https://github.com/guotingchao/nest-tencent-cloud-sdk/issues",
     "email": "guotingchaopr@gmail.com"
   },
-  "homepage": "https://github.com/guotingchao/nest-tencent-cloud-sdk"
+  "homepage": "https://github.com/guotingchao/nest-tencent-cloud-sdk",
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ]
 }
