@@ -14,7 +14,7 @@ jobs:
     name: Changelog PR or Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup PNPM
         uses: pnpm/action-setup@v2.2.1
         with:
@@ -36,7 +36,7 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          version: pnpm run version
+          version: pnpm pnpm run version
           publish: pnpm changeset publish
           commit: '[ci] release'
           title: '[ci] release'

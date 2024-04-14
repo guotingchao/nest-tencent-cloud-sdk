@@ -35,7 +35,7 @@ $ pnpm add @cardbrother/nest-tencent-cloud-sdk
 
 ### Usage
 
-\_comming soon\_\_
+_comming soon_
 
 ### CHANGELOG
 
