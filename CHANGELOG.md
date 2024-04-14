@@ -1,5 +1,11 @@
 # @cardbrother/nestjs-tencent-cloud-sdk
 
+## 0.2.4
+
+### Patch Changes
+
+- [`b29db5a`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/b29db5a3336a44b756e062450313c7eaa553f99f) Thanks [@guotingchao](https://github.com/guotingchao)! - update ci
+
 ## 0.2.3
 
 ### Patch Changes
