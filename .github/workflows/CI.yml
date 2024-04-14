@@ -11,7 +11,7 @@ defaults:
 
 jobs:
   changelog:
-    name: Changelog PR or Release
+    name: Release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

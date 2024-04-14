@@ -1,10 +1,14 @@
 # @cardbrother/nestjs-tencent-cloud-sdk
 
-[![Sync README with CHANGELOG](https://github.com/guotingchao/nest-tencent-cloud-sdk/actions/workflows/sync-readme.yml/badge.svg)](https://github.com/guotingchao/nest-tencent-cloud-sdk/actions/workflows/sync-readme.yml)
+---
+
+[![Release](https://github.com/guotingchao/nest-tencent-cloud-sdk/actions/workflows/CI.yml/badge.svg)](https://github.com/guotingchao/nest-tencent-cloud-sdk/actions/workflows/CI.yml)
 
 [![package version](https://badge.fury.io/js/@cardbrother%2Fnestjs-tencent-cloud-sdk.svg)](https://badge.fury.io/js/@cardbrother%2Fnestjs-tencent-cloud-sdk)
 
 ### Description
+
+---
 
 > Tencent Cloud SDK for NestJS Developers
 
@@ -14,6 +18,8 @@
 - supoort latest version of Tencent Cloud API
 
 ### Installation
+
+---
 
 - npm
 
@@ -35,12 +41,14 @@ $ pnpm add @cardbrother/nest-tencent-cloud-sdk
 
 ### Usage
 
+---
+
 _comming soon_
 
-### CHANGELOG
+### [CHANGELOG](./docs/CHANGELOG.md)
 
-[CHANGELOG](./docs/CHANGELOG.md)
+---
 
-### License
+### License [MIT](./docs/LICENSE)
 
-[MIT](./docs/LICENSE)
+---
