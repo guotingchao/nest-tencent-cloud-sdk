@@ -4,7 +4,7 @@ name: Release
 on:
   push:
     branches:
-      - release/*
+      - main
 defaults:
   run:
     shell: bash
@@ -36,8 +36,8 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          version: pnpm pnpm run version
-          publish: pnpm changeset publish
+          version: pnpm run release:version
+          publish: pnpm run release:publish
           commit: '[ci] release'
           title: '[ci] release'
         env:
