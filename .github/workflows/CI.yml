@@ -22,18 +22,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
-
       - name: Setup PNPM
         uses: pnpm/action-setup@v3
         with:
           version: 8
           run_install: false
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
       - name: Get pnpm store directory
         run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
@@ -60,17 +59,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
-
       - name: Setup PNPM
         uses: pnpm/action-setup@v3
         with:
           version: 8
           run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
 
       - name: Use Cached Dependencies
         uses: actions/cache@v4
@@ -89,17 +88,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
-
       - name: Setup PNPM
         uses: pnpm/action-setup@v3
         with:
           version: 8
           run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
 
       - name: Use Cached Dependencies
         uses: actions/cache@v4
@@ -124,17 +123,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
-
       - name: Setup PNPM
         uses: pnpm/action-setup@v3
         with:
           version: 8
           run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
 
       - name: Use Cached Dependencies
         uses: actions/cache@v4
