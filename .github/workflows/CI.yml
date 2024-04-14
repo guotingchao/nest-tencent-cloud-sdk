@@ -26,24 +26,26 @@ jobs:
       - name: Build
         run: |
           bun run build
-          mkdir .changeset
 
-      - name: Generate ChangeLog
+      - name: Release
         uses: changesets/action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Push changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action Bot"
-          git add CHANGLOG.md
-          bun run commit:changelog
-
-      - name: Publish
-        run: |
+        with: |
           bun run changeset version
           bun run changeset publish
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # - name: Push changes
+      #   run: |
+      #     git config --local user.email "action@github.com"
+      #     git config --local user.name "GitHub Action Bot"
+      #     git add CHANGLOG.md
+      #     bun run commit:changelog
+
+      # - name: Publish
+      #   run: |
+      #     bun run changeset version
+      #     bun run changeset publish
+      #     env:
+      #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
