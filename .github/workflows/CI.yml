@@ -1,0 +1,45 @@
+# 整个流程的名字
+name: Release
+
+on:
+  push:
+    branches:
+      - release/*
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  changelog:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v2.2.1
+        with:
+          version: ^8.6.11
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.10.0
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build Packages
+        run: pnpm run build
+
+      - name: Create Release Pull Request or Publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          version: pnpm pnpm run version
+          publish: pnpm changeset publish
+          commit: '[ci] release'
+          title: '[ci] release'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

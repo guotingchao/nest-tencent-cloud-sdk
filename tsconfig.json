@@ -1,13 +1,10 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
+    "module": "CommonJS",
+    "target": "ESNext",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "target": "ES2021",
-    "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
@@ -16,6 +13,9 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
-  }
+    "noFallthroughCasesInSwitch": false,
+  },
+  "include": [
+    "src/**/*"
+  ]
 }

@@ -1,5 +1,20 @@
 # @cardbrother/nestjs-tencent-cloud-sdk
 
+## 0.2.2
+
+### Patch Changes
+
+- CI
+
+## 0.2.1
+
+### Patch Changes
+
+- change readme
+- add workflow
+- upgrade changelog
+- add new workflow
+
 ## 0.2.1-alpha.2
 
 ### Patch Changes

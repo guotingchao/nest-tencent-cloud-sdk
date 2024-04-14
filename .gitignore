@@ -1,7 +1,7 @@
 # compiled output
-/dist
 /node_modules
 /build
+/dist
 
 # Logs
 logs
@@ -54,6 +54,9 @@ pids
 *.seed
 *.pid.lock
 
+# Changeset
+.changeset/*.md
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
@@ -61,4 +64,6 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 .env
 
 # changelog
-.changeset/
+
+# turbo
+.turbo
