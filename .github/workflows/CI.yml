@@ -8,10 +8,11 @@ on:
 defaults:
   run:
     shell: bash
+  runs-on: ubuntu-latest
 
 jobs:
-  changelog:
-    name: Release
+  prepare:
+    name: Prepare
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,10 +29,24 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+  test:
+    name: Test
+    needs: prepare
+    steps:
+      - name: Test
+        run: pnpm run test
 
+  build:
+    needs: test
+    name: build
+    steps:
       - name: Build Packages
         run: pnpm run build
 
+  release:
+    name: Release & Publish
+    needs: build
+    steps:
       - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1

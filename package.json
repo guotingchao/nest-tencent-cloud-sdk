@@ -13,6 +13,7 @@
   "scripts": {
     "build": "nest build",
     "release": "pnpm release:check && pnpm release:version && pnpm release:publish",
+    "release:changelog": "pnpm changeset",
     "release:check": "pnpm lint",
     "release:publish": "pnpm -r publish --tag latest",
     "release:version": "pnpm changeset version",
