@@ -1,8 +1,11 @@
-# 整个流程的名字
 name: Release
-
+env:
+  STORE_PATH: ""
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
 defaults:
@@ -13,18 +16,45 @@ jobs:
   prepare:
     name: Prepare
     runs-on: ubuntu-latest
+    outputs:
+      cache-key: ${{ steps.cache-keys.outputs.key }}
     steps:
       - uses: actions/checkout@v4
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v2.2.1
-        with:
-          version: ^8.6.11
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'
+          cache: "pnpm"
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      - name: Generate cache key
+        id: cache-keys
+        run: echo "::set-output name=key::$(echo ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }})"
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ steps.cache-keys.outputs.key }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
         run: pnpm install
@@ -33,6 +63,26 @@ jobs:
     runs-on: ubuntu-latest
     needs: prepare
     steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+          run_install: true
+
+      - name: Use Cached Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ needs.prepare.outputs.cache-key }}
+
       - name: Test
         run: pnpm run test
 
@@ -55,8 +105,8 @@ jobs:
         with:
           version: pnpm run release:version
           publish: pnpm run release:publish
-          commit: '🎡[CI] Release'
-          title: '🎡[CI] Release'
+          commit: "🎡[CI] Release"
+          title: "🎡[CI] Release"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

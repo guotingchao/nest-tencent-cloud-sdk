@@ -46,7 +46,6 @@
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.1",
     "@nestjs/cli": "^10.3.2",
-    "@nestjs/common": "^10.3.1",
     "@nestjs/schematics": "^10.1.1",
     "@nestjs/testing": "^10.3.7",
     "@types/jest": "^29.5.12",
@@ -85,7 +84,8 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "passWithNoTests": true
   },
   "publishConfig": {
     "access": "public",
