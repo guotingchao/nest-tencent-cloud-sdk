@@ -1,15 +1,54 @@
 # @cardbrother/nestjs-tencent-cloud-sdk
 
-To install dependencies:
+---
+
+[![Release](https://github.com/guotingchao/nest-tencent-cloud-sdk/actions/workflows/CI.yml/badge.svg)](https://github.com/guotingchao/nest-tencent-cloud-sdk/actions/workflows/CI.yml)
+
+[![package version](https://badge.fury.io/js/@cardbrother%2Fnestjs-tencent-cloud-sdk.svg)](https://badge.fury.io/js/@cardbrother%2Fnestjs-tencent-cloud-sdk)
+
+### Description
+
+---
+
+> Tencent Cloud SDK for NestJS Developers
+
+- Use pnpm or bun
+- Zero config
+- support all Tencent Cloud API
+- supoort latest version of Tencent Cloud API
+
+### Installation
+
+---
+
+- npm
 
 ```bash
-bun install
+$ npm install @cardbrother/nest-tencent-cloud-sdk
 ```
 
-To run:
+- yarn
 
 ```bash
-bun run index.ts
+$ yarn add @cardbrother/nest-tencent-cloud-sdk
 ```
 
-This project was created using `bun init` in bun v1.1.3. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+- pnpm 🚀 **Recommended**
+
+```bash
+$ pnpm add @cardbrother/nest-tencent-cloud-sdk
+```
+
+### Usage
+
+---
+
+_comming soon_
+
+### [CHANGELOG](./docs/CHANGELOG.md)
+
+---
+
+### License [MIT](./docs/LICENSE)
+
+---

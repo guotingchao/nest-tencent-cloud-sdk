@@ -1,6 +1,7 @@
 {
   "name": "@cardbrother/nestjs-tencent-cloud-sdk",
-  "version": "0.2.1",
+  "version": "0.2.2",
+  "main": "dist/index.js",
   "description": "nestjs tencent cloud sdk",
   "author": "guotingchaopr@gmail.com",
   "license": "MIT",
@@ -10,36 +11,48 @@
     "url": "https://github.com/guotingchao/nest-tencent-cloud-sdk"
   },
   "scripts": {
+    "build": "nest build",
+    "release": "pnpm release:check && pnpm release:version && pnpm release:publish",
+    "release:check": "pnpm lint",
+    "release:publish": "pnpm -r publish --tag latest",
+    "release:version": "pnpm changeset version",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "ci:publish": "pnpm publish -r",
-    "build": "nest build",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  ],
+  "keywords": [
+    "Nest",
+    "NestJS",
+    "TencentCloud",
+    "TencentCloud-sdk",
+    "Nest-TencentCloud",
+    "Nest-TencentCloud-SDK"
+  ],
   "dependencies": {
-    "@nestjs/common": "^10.3.7",
-    "@nestjs/config": "^3.2.2",
-    "joi": "^17.12.3",
-    "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1"
+    "@nestjs/common": "^10.3.7"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.1",
     "@nestjs/cli": "^10.3.2",
+    "@nestjs/common": "^10.3.1",
     "@nestjs/schematics": "^10.1.1",
     "@nestjs/testing": "^10.3.7",
-    "@types/bun": "latest",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.12.7",
     "@types/supertest": "^6.0.2",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
-    "cross-env": "^7.0.3",
-    "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
@@ -75,9 +88,13 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/",
-    "scope": "@cardbrother"
+    "scope": "@cardbrother",
+    "tag": "latest",
+    "registry": "https://registry.npmjs.org/"
   },
-  "module": "index.ts",
-  "type": "module"
+  "bugs": {
+    "url": "https://github.com/guotingchao/nest-tencent-cloud-sdk/issues",
+    "email": "guotingchaopr@gmail.com"
+  },
+  "homepage": "https://github.com/guotingchao/nest-tencent-cloud-sdk"
 }
