@@ -19,8 +19,6 @@
 
 ### Installation
 
----
-
 - npm
 
 ```bash
@@ -41,14 +39,24 @@ $ pnpm add @cardbrother/nest-tencent-cloud-sdk
 
 ### Usage
 
----
+```ts
+import { Module } from '@nestjs/common';
+import { TencentCloudModule } from '@cardbrother/nest-tencent-cloud-sdk';
+
+@Module({
+  imports: [
+    TencentCloudModule.forRoot({
+      secretId: 'your secretId',
+      secretKey,
+      global: true, // false by default
+    }),
+  ],
+})
+export class AppModule {}
+```
 
 _comming soon_
 
-### [CHANGELOG](./docs/CHANGELOG.md)
+### [CHANGELOG](https://github.com/guotingchao/nest-tencent-cloud-sdk/blob/main/CHANGELOG.md)
 
----
-
-### License [MIT](./docs/LICENSE)
-
----
+### License [MIT](https://github.com/guotingchao/nest-tencent-cloud-sdk/blob/main/LICENSE)
