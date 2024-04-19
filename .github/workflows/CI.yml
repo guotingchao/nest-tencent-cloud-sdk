@@ -2,11 +2,7 @@ name: Release
 env:
   STORE_PATH: ""
 on:
-  push:
-    branches:
-      - main
   pull_request:
-    types: [opened, synchronize, reopened]
     branches:
       - main
 defaults:
