@@ -22,7 +22,7 @@ jobs:
       - name: Setup PNPM
         uses: pnpm/action-setup@v3
         with:
-          version: 8
+          version: 9
           run_install: false
 
       - name: Setup Node
@@ -59,7 +59,7 @@ jobs:
       - name: Setup PNPM
         uses: pnpm/action-setup@v3
         with:
-          version: 8
+          version: 9
           run_install: false
 
       - name: Setup Node
@@ -91,7 +91,7 @@ jobs:
       - name: Setup PNPM
         uses: pnpm/action-setup@v3
         with:
-          version: 8
+          version: 9
           run_install: false
 
       - name: Setup Node
@@ -129,7 +129,7 @@ jobs:
       - name: Setup PNPM
         uses: pnpm/action-setup@v3
         with:
-          version: 8
+          version: 9
           run_install: false
 
       - name: Setup Node
@@ -149,10 +149,10 @@ jobs:
 
       - name: Download a Build Artifact
         uses: actions/download-artifact@v4.1.4
-
         with:
           name: dist
           path: ./dist
+
       - name: Create Release Pull Request or Publish
         uses: changesets/action@v1
         with:
