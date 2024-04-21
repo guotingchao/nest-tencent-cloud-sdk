@@ -1,1 +1,1 @@
-export default './@cardbrother';
+export * from './@cardbrother';
