@@ -1,5 +1,9 @@
+import { ModuleMetadata, Type } from '@nestjs/common';
 import { AbstractClient } from 'tencentcloud-sdk-nodejs/tencentcloud/common/abstract_client';
 import { ClientProfile } from 'tencentcloud-sdk-nodejs/tencentcloud/common/interface';
+
+import { OcrProvider } from './ocr/ocr.provider';
+import { SmsProvider } from './sms/sms.provider';
 
 // TencentCloudClient interface
 export class TencentCloudAbstructClient extends AbstractClient {
@@ -37,10 +41,35 @@ export interface TencentCloudModuleOptions {
   profile?: ClientProfile;
 }
 
-// ClientType enum
+/**
+ * @name TencentCloudAsyncModuleOptions
+ * @description TencentCloudAsyncModuleOptions is an interface for the options that can be passed to the `forRootAsync` method of the `TencentCloudModule`.
+ * @param {Function} useFactory The factory function that will be used to create the options.
+ * @param {Array} inject The dependencies that will be injected into the factory function.
+ * @returns {Promise<TencentCloudModuleOptions> | TencentCloudModuleOptions}
+ */
+export interface TencentCloudAsyncModuleOptions<
+  T extends TencentCloudModuleOptions,
+> extends Pick<ModuleMetadata, 'imports'> {
+  useFactory: (...args: any[]) => Promise<T> | T;
+  inject?: any[];
+  useClass?: Type<T>;
+  useExisting?: Type<T>;
+  global?: boolean;
+}
 
-export const enum EClientType {
-  SMS = 'sms',
-  COS = 'cos',
-  OCR = 'ocr',
+// TencentCloudClientType Instance Object Enum
+export enum TencentCloudClientType {
+  SMS = 'SMS', // 短信
+  OCR = 'OCR', // OCR 图像识别
+  // COS = 'COS', // 对象存储
+}
+
+/**
+ * @name ClientTypeToClassMap
+ * @description ClientTypeToClassMap is an interface that maps the `TencentCloudClientType` to the class that implements the client.
+ */
+export interface ClientTypeToClassMap {
+  SMS: SmsProvider;
+  OCR: OcrProvider;
 }

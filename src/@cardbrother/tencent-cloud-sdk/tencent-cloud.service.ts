@@ -1,9 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
 
 import {
-  EClientType,
+  ClientTypeToClassMap,
   TENCENT_CLOUD_MODULE_OPTIONS_TOKEN,
-  TencentCloudAbstructClient,
+  TencentCloudClientType,
   TencentCloudModuleOptions,
 } from '../tencent-cloud-sdk/tencent-cloud.interface';
 import { ClientFactoryProvider } from './client-factory.provider';
@@ -23,9 +23,9 @@ export class TencentCloudService {
     return this.options;
   }
 
-  public async useClient<T extends TencentCloudAbstructClient>(
-    clientType: EClientType,
-  ): Promise<T> {
-    return this.clientFactory.createClient(clientType) as Promise<T>;
+  public async useClient<
+    K extends TencentCloudClientType | keyof typeof TencentCloudClientType,
+  >(clientType: K): Promise<ClientTypeToClassMap[K]> {
+    return this.clientFactory.createClient(clientType as K);
   }
 }

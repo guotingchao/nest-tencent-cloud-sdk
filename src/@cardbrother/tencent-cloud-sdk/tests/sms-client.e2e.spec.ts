@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { SmsProvider } from '../sms/sms.provider';
-import { EClientType } from '../tencent-cloud.interface';
 import { TencentCloudModule } from '../tencent-cloud.module';
 import { TencentCloudService } from '../tencent-cloud.service';
 
@@ -9,7 +8,7 @@ import { TencentCloudService } from '../tencent-cloud.service';
  * @name @cardbrother/tencentCloudModule Test
  * @description This test is end to end for the tencent sms service
  */
-describe('@cardbrother/tencentCloudModule Test', () => {
+describe('@cardbrother/tencentCloudModule SMS Test', () => {
   let tencentCloudService: TencentCloudService;
   const tencent_secretId = '';
   const tencent_secretKey = '';
@@ -38,9 +37,7 @@ describe('@cardbrother/tencentCloudModule Test', () => {
   });
 
   it('should have useClient Sms Type', async () => {
-    const sms_client = await tencentCloudService.useClient<SmsProvider>(
-      EClientType.SMS,
-    );
+    const sms_client = await tencentCloudService.useClient('SMS');
     expect(sms_client).toBeDefined();
     expect(sms_client).toEqual(expect.any(SmsProvider));
     const res = await sms_client.send({
