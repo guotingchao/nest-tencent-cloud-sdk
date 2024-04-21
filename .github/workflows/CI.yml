@@ -68,11 +68,11 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
-      - name: Use Cached Dependencies
-        uses: actions/cache@v4
-        with:
-          path: $STORE_PATH
-          key: ${{ needs.prepare.outputs.cache-key }}
+      # - name: Use Cached Dependencies
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: $STORE_PATH
+      #     key: ${{ needs.prepare.outputs.cache-key }}
 
       - name: Install dependencies
         run: pnpm install
