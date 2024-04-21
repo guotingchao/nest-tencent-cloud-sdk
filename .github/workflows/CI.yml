@@ -2,9 +2,9 @@ name: Release
 env:
   STORE_PATH: ""
 on:
-  pull_request:
+  push:
     branches:
-      - main
+      - release/*
 defaults:
   run:
     shell: bash
