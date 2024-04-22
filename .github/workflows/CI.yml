@@ -36,15 +36,15 @@ jobs:
 
       - name: Generate cache key
         id: cache-keys
-        run: echo "key=$(echo ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }})" >> "$GITHUB_OUTPUT"
+        run: echo "key=${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
 
-      - name: Setup pnpm cache
+      - name: Setup cache
         uses: actions/cache@v4
         with:
           path: "$STORE_PATH"
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ steps.cache-keys.outputs.key }}
           restore-keys: |
-            ${{ runner.os }}-pnpm-
+            ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
         run: pnpm install
@@ -70,7 +70,7 @@ jobs:
           cache: "pnpm"
 
       - name: Use Cached Dependencies
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: "$STORE_PATH"
           key: ${{ needs.prepare.outputs.cache-key }}
