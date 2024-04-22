@@ -10,8 +10,8 @@ import { TencentCloudService } from '../tencent-cloud.service';
  */
 describe('@cardbrother/tencentCloudModule SMS Test', () => {
   let tencentCloudService: TencentCloudService;
-  const tencent_secretId = '';
-  const tencent_secretKey = '';
+  const tencent_secretId = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
+  const tencent_secretKey = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [
