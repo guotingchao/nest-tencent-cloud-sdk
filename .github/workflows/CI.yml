@@ -41,7 +41,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: $STORE_PATH
-          key: ${{ steps.cache-keys.outputs.key }}
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -68,11 +68,11 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
-      # - name: Use Cached Dependencies
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: $STORE_PATH
-      #     key: ${{ needs.prepare.outputs.cache-key }}
+      - name: Use Cached Dependencies
+        uses: actions/cache@v4
+        with:
+          path: $STORE_PATH
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
       - name: Install dependencies
         run: pnpm install
@@ -104,7 +104,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: $STORE_PATH
-          key: ${{ needs.prepare.outputs.cache-key }}
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
       - name: Install dependencies
         run: pnpm install
@@ -145,7 +145,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: $STORE_PATH
-          key: ${{ needs.prepare.outputs.cache-key }}
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
 
       - name: Download a Build Artifact
         uses: actions/download-artifact@v4.1.4
