@@ -152,7 +152,7 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml')}}
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Download a Build Artifact
         uses: actions/download-artifact@v4.1.4
@@ -163,8 +163,8 @@ jobs:
       - name: Create Release Pull Request or Publish
         uses: changesets/action@v1
         with:
-          version: pnpm run release:version
-          publish: pnpm run release:publish
+          version: npx run release:version
+          publish: npx run release:publish
           commit: "🎡[CI] Release"
           title: "🎡[CI] Release"
         env:
