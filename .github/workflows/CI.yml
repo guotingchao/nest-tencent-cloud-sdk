@@ -13,8 +13,6 @@ jobs:
   prepare:
     name: Prepare
     runs-on: ubuntu-latest
-    outputs:
-      cache-key: ${{ steps.cache-keys.outputs.key }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,12 +30,14 @@ jobs:
           cache: "pnpm"
 
       - name: Get pnpm store directory
+        id: pnpm-store-path
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
+      - name: Setup pnpm cache
+        id: prepare-cache
+        uses: actions/cache@v4
         with:
           path: ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -71,7 +71,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: ${{ env.STORE_PATH }}
-          key: ${{ needs.prepare.outputs.cache-key }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml')}}
 
       - name: Install dependencies
         run: pnpm install
@@ -103,7 +103,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ env.STORE_PATH }}
-          key: ${{ needs.prepare.outputs.cache-key }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml')}}
 
       - name: Install Nest CLI
         run: pnpm install -g @nestjs/cli
@@ -147,7 +147,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ env.STORE_PATH }}
-          key: ${{ needs.prepare.outputs.cache-key }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml')}}
 
       - name: Install dependencies
         run: pnpm install
