@@ -22,7 +22,7 @@ jobs:
       - name: Setup PNPM
         uses: pnpm/action-setup@v3
         with:
-          version: 9
+          version: 8
           run_install: false
 
       - name: Setup Node
@@ -59,7 +59,7 @@ jobs:
       - name: Setup PNPM
         uses: pnpm/action-setup@v3
         with:
-          version: 9
+          version: 8
           run_install: false
 
       - name: Setup Node
@@ -91,7 +91,7 @@ jobs:
       - name: Setup PNPM
         uses: pnpm/action-setup@v3
         with:
-          version: 9
+          version: 8
           run_install: false
 
       - name: Setup Node
@@ -129,7 +129,7 @@ jobs:
       - name: Setup PNPM
         uses: pnpm/action-setup@v3
         with:
-          version: 9
+          version: 8
           run_install: false
 
       - name: Setup Node
