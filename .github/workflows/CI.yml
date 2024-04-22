@@ -78,7 +78,7 @@ jobs:
         run: pnpm install
 
       - name: Test
-        run: ./node_modules/.bin/jest
+        run: npx jest
 
   build:
     name: Build
