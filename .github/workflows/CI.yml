@@ -32,17 +32,15 @@ jobs:
           cache: "pnpm"
 
       - name: Get pnpm store directory
-        run: echo "STORE_PATH=$(pnpm store path --silent)" >> "$GITHUB_ENV"
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - name: Generate cache key
-        id: cache-keys
-        run: echo "key=${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
-
-      - name: Setup cache
-        uses: actions/cache@v4
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
         with:
-          path: "$STORE_PATH"
-          key: ${{ steps.cache-keys.outputs.key }}
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -107,6 +105,9 @@ jobs:
           path: "$STORE_PATH"
           key: ${{ needs.prepare.outputs.cache-key }}
 
+      - name: Install Nest CLI
+        run: pnpm install -g @nestjs/cli
+
       - name: Install dependencies
         run: pnpm install
 
@@ -139,14 +140,17 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
-      - name: Install dependencies
-        run: pnpm install
+      - name: Install Nest CLI
+        run: pnpm install -g @nestjs/cli
 
       - name: Use Cached Dependencies
         uses: actions/cache@v4
         with:
           path: "$STORE_PATH"
           key: ${{ needs.prepare.outputs.cache-key }}
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Download a Build Artifact
         uses: actions/download-artifact@v4.1.4
