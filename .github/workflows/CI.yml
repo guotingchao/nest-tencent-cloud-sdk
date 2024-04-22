@@ -56,7 +56,7 @@ jobs:
         run: pnpm install
 
       - name: Test
-        run: pnpm jest
+        run: pnpm run test
 
   build:
     name: Build
