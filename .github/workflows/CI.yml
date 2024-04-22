@@ -13,8 +13,6 @@ jobs:
   prepare:
     name: Prepare
     runs-on: ubuntu-latest
-    outputs:
-      store-path: ${{ steps.pnpm-store-path.outputs.store-path }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,21 +29,7 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
-      - name: Get pnpm store directory
-        id: pnpm-store-path
-        run: echo "store-path=${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
-
-      - name: Setup pnpm cache
-        id: prepare-cache
-        uses: actions/cache@v4
-        with:
-          path: ${{ steps.pnpm-store-path.outputs.store-path }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
       - name: Install dependencies
-        if: steps.prepare-cache.outputs.cache-hit != 'true'
         run: pnpm install
 
   test:
@@ -68,19 +52,11 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
-      - name: Use Cached Dependencies
-        uses: actions/cache/restore@v4
-        id: restore-cache
-        with:
-          path: ${{ needs.prepare.outputs.store-path }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml')}}
-
       - name: Install dependencies
-        if: steps.restore-cache.outputs.cache-hit != 'true'
         run: pnpm install
 
       - name: Test
-        run: npx jest
+        run: pnpm jest
 
   build:
     name: Build
@@ -102,18 +78,10 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
-      - name: Use Cached Dependencies
-        uses: actions/cache@v4
-        id: restore-cache
-        with:
-          path: ${{ needs.prepare.outputs.store-path }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml')}}
-
       - name: Install Nest CLI
         run: pnpm install -g @nestjs/cli
 
       - name: Install dependencies
-        if: steps.restore-cache.outputs.cache-hit != 'true'
         run: pnpm install
 
       - name: Build Packages
@@ -148,15 +116,7 @@ jobs:
       - name: Install Nest CLI
         run: pnpm install -g @nestjs/cli
 
-      - name: Use Cached Dependencies
-        uses: actions/cache@v4
-        id: restore-cache
-        with:
-          path: ${{ needs.prepare.outputs.store-path }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml')}}
-
       - name: Install dependencies
-        if: steps.restore-cache.outputs.cache-hit != 'true'
         run: pnpm install
 
       - name: Download a Build Artifact
