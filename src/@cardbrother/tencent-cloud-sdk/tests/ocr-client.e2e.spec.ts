@@ -18,8 +18,14 @@ describe('@cardbrother/tencentCloudModule OCR Test', () => {
       imports: [
         TencentCloudModule.forRootAsync({
           useFactory: (config: ConfigService) => {
-            const tencentSecretId = config.get('tencent_secretId');
-            const tencentSecretKey = config.get('tencent_secretKey');
+            const tencentSecretId = config.get(
+              'tencent_secretId',
+              'XXXXXXXXXXXXXXXXXXXXXXXXXX',
+            );
+            const tencentSecretKey = config.get(
+              'tencent_secretKey',
+              'XXXXXXXXXXXXXXXXXXXXXXXXX',
+            );
             return {
               apiId: tencentSecretId,
               apiSecret: tencentSecretKey,
