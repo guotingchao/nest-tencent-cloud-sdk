@@ -33,8 +33,7 @@ jobs:
 
       - name: Get pnpm store directory
         id: pnpm-store-path
-        run: |
-          echo "::set-output name=store-path::$(pnpm store path --silent)"
+        run: echo "store-path=${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}" >> $GITHUB_OUTPUT
 
       - name: Setup pnpm cache
         id: prepare-cache
@@ -163,8 +162,8 @@ jobs:
       - name: Create Release Pull Request or Publish
         uses: changesets/action@v1
         with:
-          version: npx run release:version
-          publish: npx run release:publish
+          version: pnpm run release:version
+          publish: pnpm run release:publish
           commit: "🎡[CI] Release"
           title: "🎡[CI] Release"
         env:
