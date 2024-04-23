@@ -1,1 +1,1 @@
-export { TencentCloudModule } from './tencent-cloud-sdk/tencent-cloud.module';
+export * from './tencent-cloud-sdk';

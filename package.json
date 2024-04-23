@@ -1,10 +1,12 @@
 {
   "name": "@cardbrother/nestjs-tencent-cloud-sdk",
-  "version": "0.2.4",
+  "version": "1.0.0",
   "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
   "description": "nestjs tencent cloud sdk",
   "author": "guotingchaopr@gmail.com",
   "license": "MIT",
+  "bin": "dist/index.js",
   "organization": "cardbrother",
   "repository": {
     "type": "github",
@@ -15,7 +17,7 @@
     "release": "pnpm release:check && pnpm release:version && pnpm release:publish",
     "release:changelog": "pnpm changeset",
     "release:check": "pnpm lint",
-    "release:publish": "pnpm -r publish --tag latest",
+    "release:publish": "pnpm changeset publish",
     "release:version": "pnpm changeset version",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
@@ -37,15 +39,18 @@
     "TencentCloud",
     "TencentCloud-sdk",
     "Nest-TencentCloud",
-    "Nest-TencentCloud-SDK"
+    "Nest-TencentCloud-SDK",
+    "@cardbrother"
   ],
   "dependencies": {
-    "@nestjs/common": "^10.3.7"
+    "@nestjs/common": "^10.3.7",
+    "tencentcloud-sdk-nodejs": "^4.0.837"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.1",
     "@nestjs/cli": "^10.3.2",
+    "@nestjs/config": "^3.2.2",
     "@nestjs/schematics": "^10.1.1",
     "@nestjs/testing": "^10.3.7",
     "@types/jest": "^29.5.12",
@@ -101,6 +106,7 @@
   "files": [
     "dist",
     "README.md",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "test"
   ]
 }
