@@ -39,7 +39,8 @@
     "TencentCloud",
     "TencentCloud-sdk",
     "Nest-TencentCloud",
-    "Nest-TencentCloud-SDK"
+    "Nest-TencentCloud-SDK",
+    "@cardbrother"
   ],
   "dependencies": {
     "@nestjs/common": "^10.3.7",
