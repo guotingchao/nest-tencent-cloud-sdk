@@ -1,11 +1,5 @@
 # @cardbrother/nestjs-tencent-cloud-sdk
 
-## 0.2.3
-
-### Patch Changes
-
-- fix some yml bug
-
 ## 0.2.2
 
 ### Patch Changes

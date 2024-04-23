@@ -42,7 +42,6 @@
     "Nest-TencentCloud-SDK"
   ],
   "dependencies": {
-    "@cardbrother": "link:/Users/Gzc/Dev/Github/@nestjs-tencent-cloud-sdk/dist/@cardbrother",
     "@nestjs/common": "^10.3.7",
     "tencentcloud-sdk-nodejs": "^4.0.837"
   },

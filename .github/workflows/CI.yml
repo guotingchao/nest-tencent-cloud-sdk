@@ -13,8 +13,6 @@ jobs:
   prepare:
     name: Prepare
     runs-on: ubuntu-latest
-    outputs:
-      cache-key: ${{ steps.cache-keys.outputs.key }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,20 +28,6 @@ jobs:
         with:
           node-version: 20
           cache: "pnpm"
-      - name: Get pnpm store directory
-        run: echo "STORE_PATH=$(pnpm store path --silent)" >> "$GITHUB_ENV"
-
-      - name: Generate cache key
-        id: cache-keys
-        run: echo "key=$(echo ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }})" >> "$GITHUB_OUTPUT"
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v4
-        with:
-          path: $STORE_PATH
-          key: ${{ steps.cache-keys.outputs.key }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
         run: pnpm install
@@ -67,12 +51,6 @@ jobs:
         with:
           node-version: 20
           cache: "pnpm"
-
-      - name: Use Cached Dependencies
-        uses: actions/cache@v4
-        with:
-          path: $STORE_PATH
-          key: ${{ needs.prepare.outputs.cache-key }}
 
       - name: Install dependencies
         run: pnpm install
@@ -100,11 +78,8 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
-      - name: Use Cached Dependencies
-        uses: actions/cache@v4
-        with:
-          path: $STORE_PATH
-          key: ${{ needs.prepare.outputs.cache-key }}
+      - name: Install Nest CLI
+        run: pnpm install -g @nestjs/cli
 
       - name: Install dependencies
         run: pnpm install
@@ -138,21 +113,18 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
+      - name: Install Nest CLI
+        run: pnpm install -g @nestjs/cli
+
       - name: Install dependencies
         run: pnpm install
 
-      - name: Use Cached Dependencies
-        uses: actions/cache@v4
-        with:
-          path: $STORE_PATH
-          key: ${{ needs.prepare.outputs.cache-key }}
-
       - name: Download a Build Artifact
         uses: actions/download-artifact@v4.1.4
-
         with:
           name: dist
           path: ./dist
+
       - name: Create Release Pull Request or Publish
         uses: changesets/action@v1
         with:

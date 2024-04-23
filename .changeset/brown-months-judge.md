@@ -2,4 +2,4 @@
 "@cardbrother/nestjs-tencent-cloud-sdk": patch
 ---
 
-update workflows
+0.2.4
