@@ -1,10 +1,9 @@
 name: 🚀 Release
 
 on:
-  pull_request:
+  push:
     branches:
       - main
-  workflow_dispatch:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
