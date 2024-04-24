@@ -62,3 +62,12 @@ jobs:
 
       - name: Test
         run: pnpm run test
+     
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+          base: main
+          labels: "CI"
+          assignees: "guozichun"

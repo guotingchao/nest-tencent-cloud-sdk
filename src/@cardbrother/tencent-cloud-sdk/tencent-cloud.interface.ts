@@ -1,7 +1,9 @@
 import { ModuleMetadata, Type } from '@nestjs/common';
+import { StaticGetAuthorizationOptions } from 'cos-nodejs-sdk-v5';
 import { AbstractClient } from 'tencentcloud-sdk-nodejs/tencentcloud/common/abstract_client';
 import { ClientProfile } from 'tencentcloud-sdk-nodejs/tencentcloud/common/interface';
 
+import { CosProvider } from './cos/cos.provider';
 import { OcrProvider } from './ocr/ocr.provider';
 import { SmsProvider } from './sms/sms.provider';
 
@@ -36,9 +38,10 @@ export const TENCENT_CLOUD_MODULE_OPTIONS_TOKEN =
 export interface TencentCloudModuleOptions {
   apiId?: string;
   apiSecret?: string;
-  region: string;
+  region?: string;
   global?: true;
   profile?: ClientProfile;
+  cos?: StaticGetAuthorizationOptions;
 }
 
 /**
@@ -62,7 +65,7 @@ export interface TencentCloudAsyncModuleOptions<
 export enum TencentCloudClientType {
   SMS = 'SMS', // 短信
   OCR = 'OCR', // OCR 图像识别
-  // COS = 'COS', // 对象存储
+  COS = 'COS', // 对象存储
 }
 
 /**
@@ -72,4 +75,9 @@ export enum TencentCloudClientType {
 export interface ClientTypeToClassMap {
   SMS: SmsProvider;
   OCR: OcrProvider;
+  COS: CosProvider;
 }
+
+export type TencentCloudCosOptions = {
+  [P in 'SecretId' | 'SecretKey' | 'Region']?: StaticGetAuthorizationOptions[P];
+} & Omit<StaticGetAuthorizationOptions, 'SecretId' | 'SecretKey' | 'Region'>;
