@@ -2,14 +2,9 @@ name: 🧪 Test
 on:
   push:
     branches:
-      - "**"
-      - "!main"
-      - "!master"
-  pull_request:
-    branches:
-      - "**"
-      - "!main"
-      - "!master"
+      - develop
+      - release/**
+      - hotfix/**
 defaults:
   run:
     shell: bash
@@ -19,17 +14,17 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - name: ⬇️ Checkout
-        id: checkout
-        uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: 🟢 Setup node
         id: setup-node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: latest
+
+      - name: ⬇️ Checkout
+        id: checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🥡 Setup pnpm
         id: setup-pnpm
@@ -40,8 +35,7 @@ jobs:
 
       - name: 🎈 Get pnpm store directory
         id: get-pnpm-cache-dir
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+        run: echo "pnpm_cache_dir=$(pnpm store path)" >> "$GITHUB_OUTPUT"
 
       - name: 🔆 Cache pnpm modules
         uses: actions/cache@v4
@@ -59,14 +53,19 @@ jobs:
       - name: Test
         run: pnpm run test
 
+      - name: Reset promotion branch
+        run: |
+          git fetch origin main:main
+          git reset --hard main
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
           base: main
-          title: "Pull Request form Actions By ${{ github.ref }}"
-          body: "This is a pull request created by Actions"
-          commit-message: "Pull Request main into ${{ github.ref }}"
+          title: "Pull Request form Github Actions"
+          body: "This is a pull request created by Actions Robot 🤖"
+          commit-message: "Pull Request ${{ github.head_ref }} into main"
           labels: "CI"
           assignees: "guotingchao"
