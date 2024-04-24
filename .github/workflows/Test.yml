@@ -69,7 +69,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
           base: main
-          title: "Pull Request form Actions By ${{ github.ref }}"
+          title: "Pull Request form Actions By ${{ github.actor }}"
           body: "This is a pull request created by Actions"
           commit-message: "Pull Request main into ${{ github.ref }}"
           labels: "CI"
