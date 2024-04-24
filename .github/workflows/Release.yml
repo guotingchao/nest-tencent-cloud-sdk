@@ -31,7 +31,7 @@ jobs:
         id: setup-node
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: latest
 
       - name: 🥡 Setup pnpm
         id: setup-pnpm
