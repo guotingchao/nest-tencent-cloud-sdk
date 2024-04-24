@@ -1,6 +1,7 @@
 import { DynamicModule, Module, Provider } from '@nestjs/common';
 
 import { ClientFactoryProvider } from './client-factory.provider';
+import { CosProvider } from './cos/cos.provider';
 import { OcrProvider } from './ocr/ocr.provider';
 import { SmsProvider } from './sms/sms.provider';
 import {
@@ -17,8 +18,8 @@ import { TencentCloudService } from './tencent-cloud.service';
  * @returns {DynamicModule}
  */
 @Module({
-  providers: [TencentCloudService, OcrProvider, SmsProvider],
-  exports: [TencentCloudService, OcrProvider, SmsProvider],
+  providers: [TencentCloudService, OcrProvider, SmsProvider, CosProvider],
+  exports: [TencentCloudService],
 })
 export class TencentCloudModule {
   public static forRoot(options: TencentCloudModuleOptions): DynamicModule {
