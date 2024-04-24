@@ -73,4 +73,4 @@ jobs:
           body: "This is a pull request created by Actions"
           commit-message: "Pull Request main into ${{ github.ref }}"
           labels: "CI"
-          assignees: "guozichun"
+          assignees: "guotingchao"
