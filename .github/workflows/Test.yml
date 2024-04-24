@@ -65,12 +65,12 @@ jobs:
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6.0.4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore: CI"
-          title: "chore: update dependencies"
-          body: "This PR updates dependencies"
-          branch: "chore/update-dependencies"
-          base: "main"
-          labels: "dependencies"
-          assignees: "octocat"
+        # with:
+        #   token: ${{ secrets.GITHUB_TOKEN }}
+        #   commit-message: "chore: CI"
+        #   title: "chore: update dependencies"
+        #   body: "This PR updates dependencies"
+        #   branch: "chore/update-dependencies"
+        #   base: "main"
+        #   labels: "dependencies"
+        #   assignees: "octocat"
