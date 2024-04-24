@@ -66,9 +66,11 @@ export class CosAbstructClient {
   protected readonly cosInstance: COS;
   constructor(options: TencentCloudModuleOptions) {
     this.baseCosOption = options.cos;
-    this.cosInstance = new COS({
-      SecretId: this.baseCosOption.SecretId,
-      SecretKey: this.baseCosOption.SecretKey,
-    });
+    if (this.baseCosOption) {
+      this.cosInstance = new COS({
+        SecretId: this.baseCosOption.SecretId,
+        SecretKey: this.baseCosOption.SecretKey,
+      });
+    } else console.warn('cos options is not defined in Module initlization');
   }
 }

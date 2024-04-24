@@ -47,14 +47,14 @@ describe('@cardbrother/tencentCloudModule COS Test', () => {
     const sign = await cosClient.getAuthorization({
       Method: 'GET',
       Key: testOrignalPictureSource,
-      Region: 'eu-frankfurt',
+      Region: 'api-guangzhou',
       Expires: 900, // 900 seconds
     });
 
     const imgUrl = await cosClient.getDownloadUrl({
-      Bucket: '',
+      Bucket: 'test-1250000000',
       Key: testOrignalPictureSource,
-      Region: '',
+      Region: 'api-guangzhou',
       Sign: true,
     });
 
