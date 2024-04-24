@@ -1,5 +1,11 @@
 # @cardbrother/nestjs-tencent-cloud-sdk
 
+## 1.0.1
+
+### Patch Changes
+
+- update preset
+
 ## 1.0.0
 
 ### Major Changes
