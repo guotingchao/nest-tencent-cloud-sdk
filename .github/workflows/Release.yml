@@ -5,7 +5,7 @@ on:
     branches:
       - main
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+# concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -14,16 +14,16 @@ env:
 jobs:
   release:
     name: 🚀 Release
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node-version: [lts/*]
-        pnpm-version: [latest]
-    runs-on: ${{ matrix.os }}
+    # strategy:
+    #   matrix:
+    #     os: [ubuntu-latest]
+    #     node-version: [lts/*]
+    #     pnpm-version: [latest]
+    runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout
         id: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4s
         with:
           token: ${{ env.GITHUB_TOKEN }}
 
@@ -35,15 +35,14 @@ jobs:
 
       - name: 🥡 Setup pnpm
         id: setup-pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4s
         with:
-          version: ${{ matrix.pnpm-version }}
+          version: latest
           run_install: false
 
       - name: 🎈 Get pnpm store directory
         id: get-pnpm-cache-dir
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+        run: echo "pnpm_cache_dir=$(pnpm store path)" >> "$GITHUB_OUTPUT"
 
       - name: 🔆 Cache pnpm modules
         uses: actions/cache@v4
