@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: ⬇️ Checkout
         id: checkout
-        uses: actions/checkout@v4s
+        uses: actions/checkout@v4
         with:
           token: ${{ env.GITHUB_TOKEN }}
 
