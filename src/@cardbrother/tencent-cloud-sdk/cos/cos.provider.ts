@@ -33,7 +33,7 @@ export class CosProvider extends CosAbstructClient implements ICosProvider {
     return await new Promise((resolve, reject) => {
       this.cosInstance.getObjectUrl(
         {
-          Region: this.baseCosOption.Region,
+          ...this.baseCosOption,
           ...(options as GetObjectUrlParams),
         },
         (err: COS.CosError, data: COS.GetObjectUrlResult) => {
