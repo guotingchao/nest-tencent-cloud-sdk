@@ -9,7 +9,7 @@
   "commit": false,
   "access": "public",
   "updateInternalDependencies": "patch",
-  "baseBranch": "develop",
+  "baseBranch": "main",
   "registry": "https://registry.npmjs.org",
   "scope": "@cardbrother",
   "ignore": []
