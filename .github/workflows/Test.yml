@@ -62,7 +62,7 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.head_ref }}
+          branch: ${{ github.ref }}
           base: main
           title: "Pull Request form Github Actions"
           body: "This is a pull request created by Actions Robot 🤖"
