@@ -67,7 +67,6 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore: CI Bot"
           branch: ${{ github.head_ref }}
           base: main
           labels: "CI"
