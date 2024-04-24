@@ -15,8 +15,8 @@
   "scripts": {
     "build": "nest build",
     "changeset": "changeset",
-    "publish": "changeset publish",
-    "version": "changeset version",
+    "publish:release": "changeset publish",
+    "publish:version": "changeset version",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
@@ -46,6 +46,7 @@
     "tencentcloud-sdk-nodejs": "^4.0.837"
   },
   "devDependencies": {
+    "@changesets/action": "github:changesets/action",
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.1",
     "@nestjs/cli": "^10.3.2",
