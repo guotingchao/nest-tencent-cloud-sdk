@@ -4,6 +4,7 @@ on:
     branches:
       - develop
       - release/**
+      - hotfix/**
 defaults:
   run:
     shell: bash
@@ -61,8 +62,8 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: develop
-          base: main
+          branch: main
+          base: ${{ github.head_ref }}
           title: "Pull Request form Github Actions"
           body: "This is a pull request created by Actions Robot 🤖"
           commit-message: "Pull Request ${{ github.head_ref }} into main"
