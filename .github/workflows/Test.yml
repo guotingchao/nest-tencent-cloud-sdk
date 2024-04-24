@@ -72,6 +72,6 @@ jobs:
           title: "Pull Request form Actions By ${{ github.ref }}"
           body: "This is a pull request created by Actions"
           commit-message: "Pull Request main into ${{ github.ref }}"
-          author: "${{ github.actor }}"
+          author: "guozichun"
           labels: "CI"
           assignees: "guozichun"
