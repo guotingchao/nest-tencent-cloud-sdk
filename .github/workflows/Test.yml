@@ -29,13 +29,13 @@ jobs:
         id: setup-node
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20
 
       - name: 🥡 Setup pnpm
         id: setup-pnpm
         uses: pnpm/action-setup@v3
         with:
-          version: ${{ matrix.pnpm-version }}
+          version: latest
           run_install: false
 
       - name: 🎈 Get pnpm store directory
