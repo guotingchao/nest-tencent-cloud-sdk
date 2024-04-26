@@ -1,0 +1,71 @@
+name: 🧪 Test
+on:
+  push:
+    branches:
+      - develop
+      - release/**
+      - hotfix/**
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🟢 Setup node
+        id: setup-node
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+
+      - name: ⬇️ Checkout
+        id: checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🥡 Setup pnpm
+        id: setup-pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: latest
+          run_install: false
+
+      - name: 🎈 Get pnpm store directory
+        id: get-pnpm-cache-dir
+        run: echo "pnpm_cache_dir=$(pnpm store path)" >> "$GITHUB_OUTPUT"
+
+      - name: 🔆 Cache pnpm modules
+        uses: actions/cache@v4
+        id: pnpm-cache
+        with:
+          path: ${{ steps.get-pnpm-cache-dir.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: 🧩 Install Dependencies
+        id: install-dependencies
+        run: pnpm install
+
+      - name: Test
+        run: pnpm run test
+
+      - name: Reset promotion branch
+        run: |
+          git fetch origin main:main
+          git reset --hard main
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+          base: main
+          title: "Pull Request form Github Actions"
+          body: "This is a pull request created by Actions Robot 🤖"
+          commit-message: "Pull Request ${{ github.head_ref }} into main"
+          labels: "CI"
+          assignees: "guotingchao"
