@@ -3,6 +3,8 @@
 [![CI](https://github.com/guotingchao/nest-tencent-cloud-sdk/actions/workflows/Test.yml/badge.svg)](https://github.com/guotingchao/nest-tencent-cloud-sdk/actions/workflows/Test.yml) [![Release & Publish](https://github.com/guotingchao/nest-tencent-cloud-sdk/actions/workflows/Release.yml/badge.svg)](https://github.com/guotingchao/nest-tencent-cloud-sdk/actions/workflows/Release.yml) [![package version](https://badge.fury.io/js/@cardbrother%2Fnestjs-tencent-cloud-sdk.svg)](https://badge.fury.io/js/@cardbrother%2Fnestjs-tencent-cloud-sdk) ![NPM Downloads](https://img.shields.io/npm/d18m/%40cardbrother%2Fnestjs-tencent-cloud-sdk) ![GitHub language count](https://img.shields.io/github/languages/count/guotingchao/nest-tencent-cloud-sdk?color=green)![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/t/guotingchao/nest-tencent-cloud-sdk/main?logo=github&logoColor=green&color=%23FF40E0D0)
 ![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/t/guotingchao/nest-tencent-cloud-sdk/develop?logo=github&logoColor=green&label=Develop%20Commits&color=%23FF40E0D0)
 
+Language: [English](README.md) | [中文](README_ZH.md)
+
 > Tencent Cloud SDK for NestJS Developers
 
 ## 🔨 Installation
@@ -132,6 +134,6 @@ cosClient.upload({
 });
 ```
 
-#### 📝 [CHANGELOG](https://github.com/guotingchao/nest-tencent-cloud-sdk/blob/main/CHANGELOG.md)
+#### 📝 [CHANGELOG](CHANGELOG.md)
 
 #### License [MIT](https://github.com/guotingchao/nest-tencent-cloud-sdk/blob/main/LICENSE)
