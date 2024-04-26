@@ -1,0 +1,16 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+  "changelog": [
+    "@changesets/changelog-github",
+    {
+      "repo": "guotingchao/nest-tencent-cloud-sdk"
+    }
+  ],
+  "commit": false,
+  "access": "public",
+  "updateInternalDependencies": "patch",
+  "baseBranch": "origin/main",
+  "registry": "https://registry.npmjs.org",
+  "scope": "@cardbrother",
+  "ignore": []
+}
