@@ -1,8 +1,8 @@
 import {
+  DownloadFileParams,
+  DownloadFileResult,
   GetBucketParams,
   GetBucketResult,
-  GetObjectParams,
-  GetObjectResult,
   GetObjectUrlParams,
   GetObjectUrlResult,
   StaticGetAuthorizationOptions,
@@ -30,7 +30,7 @@ export interface ICosProvider {
    * @param params GetObjectParams - 下载参数
    * @returns GetObjectResult - 下载结果
    */
-  download(params: GetObjectParams): Promise<GetObjectResult>;
+  download(params: DownloadFileParams): Promise<DownloadFileResult>;
 
   /**
    * @name 获取文件列表

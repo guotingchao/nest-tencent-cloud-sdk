@@ -1,10 +1,10 @@
 import { Inject, Injectable } from '@nestjs/common';
 import COS, {
+  DownloadFileParams,
+  DownloadFileResult,
   getAuthorization,
   GetBucketParams,
   GetBucketResult,
-  GetObjectParams,
-  GetObjectResult,
   GetObjectUrlParams,
   GetObjectUrlResult,
   UploadFileParams,
@@ -55,24 +55,16 @@ export class CosProvider extends CosAbstructClient implements ICosProvider {
     });
   }
 
-  public upload(params: UploadFileParams): Promise<UploadFileResult> {
-    console.debug('🐛🐛🐛 ------------------------------🐛🐛🐛');
-    console.debug('🐛🐛🐛 ::: params:::', params);
-    console.debug('🐛🐛🐛 ------------------------------🐛🐛🐛');
-
-    return;
+  public async upload(params: UploadFileParams): Promise<UploadFileResult> {
+    return await this.cosInstance.uploadFile(params);
   }
 
-  public download(params: GetObjectParams): Promise<GetObjectResult> {
-    console.debug('🐛🐛🐛 ------------------------------🐛🐛🐛');
-    console.debug('🐛🐛🐛 ::: params:::', params);
-    console.debug('🐛🐛🐛 ------------------------------🐛🐛🐛');
-    return;
+  public async download(
+    params: DownloadFileParams,
+  ): Promise<DownloadFileResult> {
+    return await this.cosInstance.downloadFile(params);
   }
-  public fetchList(params: GetBucketParams): Promise<GetBucketResult> {
-    console.debug('🐛🐛🐛 ------------------------------🐛🐛🐛');
-    console.debug('🐛🐛🐛 ::: params:::', params);
-    console.debug('🐛🐛🐛 ------------------------------🐛🐛🐛');
-    return;
+  public async fetchList(params: GetBucketParams): Promise<GetBucketResult> {
+    return await this.cosInstance.getBucket(params);
   }
 }
