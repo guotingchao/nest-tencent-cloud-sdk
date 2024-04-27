@@ -1,5 +1,13 @@
 # @cardbrother/nestjs-tencent-cloud-sdk
 
+## 1.0.13
+
+### Patch Changes
+
+- [#47](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/47) [`6032fe5`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/6032fe57a38fc589a4a3d5d2f2f8c42434e6b884) Thanks [@github-actions](https://github.com/apps/github-actions)! - upgrade release
+
+- [#48](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/48) [`d76e314`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/d76e31476c15be6f16539c53ff2b880e8eb5532b) Thanks [@github-actions](https://github.com/apps/github-actions)! - Upgrade README
+
 ## 1.0.12
 
 ### Patch Changes
