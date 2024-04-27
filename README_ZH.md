@@ -5,9 +5,9 @@
 
 Language: [English](README.md) | [中文](README_ZH.md)
 
-> Tencent Cloud SDK for NestJS Developers
+> 腾讯云 SDK 适用于 NestJS 开发者
 
-## 🔨 Installation
+## 🔨 安装
 
 - npm
 
@@ -21,17 +21,17 @@ npm install @cardbrother/nest-tencent-cloud-sdk
 $ yarn add @cardbrother/nest-tencent-cloud-sdk
 ```
 
-- 🚀 pnpm **Recommended**
+- 🚀 pnpm **推荐**
 
 ```bash
 $ pnpm add @cardbrother/nest-tencent-cloud-sdk
 ```
 
-## 🍚 Usage
+## 🍚 使用
 
-> In your `AppModule`or `FeatureModule` module, import the `TencentCloudModule` and call the `forRoot` method to configure the Tencent Cloud SDK with your `secretId` and `secretKey`:
+> 在 `AppModule` 或 `FeatureModule` 模块中，导入 `TencentCloudModule` 并调用 `forRoot` 方法配置 Tencent Cloud SDK 的 `secretId` 和 `secretKey`：
 
-#### **Basic usage:**
+#### **基础使用:**
 
 ```ts
 import { Module } from '@nestjs/common';
@@ -49,7 +49,7 @@ import { TencentCloudModule } from '@cardbrother/nest-tencent-cloud-sdk';
         SecretId: 'COS_SECRET_ID',
         SecretKey: 'COS_SECRET_KEY',
       },
-      global: true, // if true, the TencentCloudService will be a global service, default is false
+      global: true, // 如果为 true，则 TencentCloudService 将是全局服务，默认为 false
     }),
   ],
 })
@@ -58,9 +58,9 @@ export class AppModule {}
 
 ---
 
-#### **Dynamic useage**
+#### **动态模块导入**
 
-> If you want to use a dynamic configuration, you can use the `forRootAsync` method to configure the Tencent Cloud SDK with your `secretId` and `secretKey`:
+> 如果您想使用动态配置，可以使用 `forRootAsync` 方法将您的 `secretId` 和 `secretKey` 配置为腾讯云 SDK：
 
 ```ts
 import { TencentCloudModule } from '@cardbrother/nestjs-tencent-cloud-sdk';
@@ -83,7 +83,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
           SecretId: configService.get<string>('COS_SECRET_ID'),
           SecretKey: configService.get<string>('COS_SECRET_KEY'),
         },
-        global: true, // if true, the TencentCloudService will be a global service, default is false
+        global: true, // 如果为 true，则 TencentCloudService 将是全局服务，默认为 false
       }),
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -94,7 +94,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 export class AppModule {}
 ```
 
-#### **Use TencentCloudService**
+#### **使用 TencentCloudService**
 
 ```ts
 import { Injectable } from '@nestjs/common';
@@ -105,12 +105,12 @@ export class AppService {
   constructor(
     private readonly tencentCloudService: TencentCloudService,
     @Inject(TENCENT_CLOUD_MODULE_OPTIONS_TOKEN)
-    private readonly options: TencentCloudModuleOptions, // If u want to get the options u can use this
+    private readonly options: TencentCloudModuleOptions, // 如果您想获取选项，可以使用这个
   ) {}
 
-  // imgData is a base64 string
+  // 使用 OCR 服务
   async useOCR(imgData: string) {
-    // Here the encapsulated object is dynamically instantiated based on the enumeration
+    // 封装对象是智能的根据枚举动态实例化的
     const ocrClient = await this.tencentCloudService.useClient('OCR'); // or SMS,COS,etc
     return ocrClient.fastOcr({
       ImageBase64: imgData,
@@ -119,9 +119,9 @@ export class AppService {
 }
 ```
 
-#### **Usage Tencent COS**
+#### **使用 Tencent COS**
 
-> 💡 Tips: If you pass Bucket, Region, or any parameter here it overrides the configuration at the time of imported module the reference, if you don't pass it then the import `TencentCloudModule.forRoot` configuration is used.
+> 💡 提示：如果在此处传递 Bucket、Region 或任何参数，则会覆盖导入模块时的配置；如果不传递，则会使用导入的 `TencentCloudModule.forRoot` 配置。
 
 ```ts
 const cosClient = await this.tencentCloudService.useClient('COS');

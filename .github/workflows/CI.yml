@@ -1,4 +1,4 @@
-name: 🧪 Test
+name: 🧪 CI
 on:
   push:
     branches:
@@ -10,8 +10,9 @@ defaults:
     shell: bash
 
 jobs:
-  test:
-    name: Test
+  CI:
+    name: CI
+    if: ${{ github.repository_owner == 'guotingchao' }}
     runs-on: ubuntu-latest
     steps:
       - name: 🟢 Setup node
@@ -50,15 +51,13 @@ jobs:
         id: install-dependencies
         run: pnpm install
 
-      - name: Test
+      - name: 🧪 Test
         run: pnpm run test
 
-      - name: Reset promotion branch
-        run: |
-          git fetch origin main:main
-          git reset --hard main
+      - name: 📦 Build
+        run: pnpm run build
 
-      - name: Create Pull Request
+      - name: 🦋 Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
