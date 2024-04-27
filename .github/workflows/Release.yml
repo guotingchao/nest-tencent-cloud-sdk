@@ -56,7 +56,6 @@ jobs:
           pnpm build
 
       - name: 📣 Create Release Pull Request or Publish to npm
-        if: github.head_ref == 'changeset-release/main' && github.event_name == 'push'
         id: changesets
         uses: changesets/action@v1.4.7
         with:
