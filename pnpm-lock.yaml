@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       cos-nodejs-sdk-v5:
-        specifier: 2.13.4
-        version: 2.13.4
+        specifier: 2.13.5
+        version: 2.13.5
       tencentcloud-sdk-nodejs:
-        specifier: 4.0.837
-        version: 4.0.837
+        specifier: 4.0.843
+        version: 4.0.843
     devDependencies:
       '@changesets/changelog-github':
         specifier: ^0.5.0
@@ -1200,8 +1200,8 @@ packages:
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
 
-  cos-nodejs-sdk-v5@2.13.4:
-    resolution: {integrity: sha512-ZgD3sYbq9o8M3Bah7s5jZrxSfU1xyx+nArbOvp+30JIgo2gKzY7dfO+S6zySdxd2shpRVz914//ygSs3dKGCKA==}
+  cos-nodejs-sdk-v5@2.13.5:
+    resolution: {integrity: sha512-2JIdcGFeR6RO8kfZy2x/x8eSoFNMPqeogUw+hSaCYOF65gauHyEkXiPHzlD8+YZ6qjR+Ys/zo6K0L1Bot9YKNg==}
     engines: {node: '>= 6'}
 
   cosmiconfig@8.3.6:
@@ -3090,8 +3090,8 @@ packages:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
     engines: {node: '>=6'}
 
-  tencentcloud-sdk-nodejs@4.0.837:
-    resolution: {integrity: sha512-57wftu9aVWm558fUZbKx7/X3D1HjsHkFkGEfe+0za+dkFiPi/26QnVVSu/AfNisYxYoZhj4tniYe0lS/Qcjbpw==}
+  tencentcloud-sdk-nodejs@4.0.843:
+    resolution: {integrity: sha512-/p13VcubT09nNASy2bZgbLqkGA1F/oC3a4BKJ76Ybl+JR5JmR2LVQYK3QqTRS6UTliacgLYEgtGc+WcbXhN+aQ==}
     engines: {node: '>=10'}
 
   term-size@2.2.1:
@@ -4950,7 +4950,7 @@ snapshots:
 
   core-util-is@1.0.3: {}
 
-  cos-nodejs-sdk-v5@2.13.4:
+  cos-nodejs-sdk-v5@2.13.5:
     dependencies:
       conf: 9.0.2
       fast-xml-parser: 4.2.5
@@ -7108,7 +7108,7 @@ snapshots:
 
   tapable@2.2.1: {}
 
-  tencentcloud-sdk-nodejs@4.0.837:
+  tencentcloud-sdk-nodejs@4.0.843:
     dependencies:
       form-data: 3.0.1
       get-stream: 6.0.1
