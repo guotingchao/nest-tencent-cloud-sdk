@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+
+# concurrency: ${{ github.workflow }}-${{ github.ref }}
+
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -11,7 +14,11 @@ env:
 jobs:
   release:
     name: 🚀 Release
-    if: ${{ github.repository_owner == 'guotingchao' }}
+    # strategy:
+    #   matrix:
+    #     os: [ubuntu-latest]
+    #     node-version: [lts/*]
+    #     pnpm-version: [latest]
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout
@@ -60,8 +67,8 @@ jobs:
         uses: changesets/action@v1.4.7
         with:
           title: "chore(release): version packages 🦋"
-          version: pnpm run version
-          publish: pnpm run publish
+          publish: pnpm publish
+          version: pnpm version
           commit: "chore(release): version packages 🦋 [skip ci]"
         env:
           GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
