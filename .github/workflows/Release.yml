@@ -60,8 +60,8 @@ jobs:
         uses: changesets/action@v1.4.7
         with:
           title: "chore(release): version packages 🦋"
-          publish: pnpm run publish
-          version: pnpm run version
+          version: pnpm run publish:version
+          publish: pnpm run publish:release
           commit: "chore(release): version packages 🦋 [skip ci]"
         env:
           GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
