@@ -73,5 +73,5 @@ jobs:
         if: startsWith(github.head_ref, 'changeset-release/main')  && github.event_name == 'pull_request'
         uses: JS-DevTools/npm-publish@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ env.GITHUB_TOKEN }}
           registry: "https://npm.pkg.github.com"
