@@ -57,11 +57,11 @@ jobs:
         run: pnpm run test
 
       - name: 📦 Build
-        if: startsWith(github.ref_name, 'release/') || startsWith(github.ref_name, 'hotfix/') || startsWith(github.ref_name, 'support/')
+        if: github.ref_name == 'develop'
         run: pnpm run build
 
       - name: 🦋 Create Pull Request
-        if: startsWith(github.ref_name, 'release/') || startsWith(github.ref_name, 'hotfix/') || startsWith(github.ref_name, 'support/')
+        if: github.ref_name == 'develop'
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
