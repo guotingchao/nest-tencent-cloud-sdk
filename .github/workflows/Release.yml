@@ -1,7 +1,9 @@
 name: 🚀 Release
 
 on:
-  push:
+  pull_request:
+    types:
+      - closed
     branches:
       - main
   workflow_dispatch:
@@ -12,7 +14,7 @@ env:
 jobs:
   release:
     name: 🚀 Release
-    if: ${{ github.repository_owner == 'guotingchao' }}
+    if: github.repository_owner == 'guotingchao' && github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout
