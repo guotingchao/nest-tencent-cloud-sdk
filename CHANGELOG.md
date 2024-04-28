@@ -1,4 +1,3 @@
-# @cardbrother/nestjs-tencent-cloud-sdk
 
 ## 1.0.15
 

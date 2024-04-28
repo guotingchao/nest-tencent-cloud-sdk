@@ -9,8 +9,8 @@
   "bin": "dist/index.js",
   "organization": "cardbrother",
   "repository": {
-    "type": "github",
-    "url": "https://github.com/guotingchao/nest-tencent-cloud-sdk"
+    "type": "git",
+    "url": "https://github.com/guotingchao/nest-tencent-cloud-sdk.git"
   },
   "scripts": {
     "build": "nest build",
