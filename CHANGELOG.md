@@ -1,3 +1,16 @@
+## 1.0.16
+
+### Patch Changes
+
+- [#56](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/56) [`4333f99`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/4333f9940d5731a63a610628c5ec4a98b6877ba3) Thanks [@github-actions](https://github.com/apps/github-actions)! - update cos
+
+- [#56](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/56) [`955f767`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/955f7675b466a1bfaa240c723006e32f90e785ea) Thanks [@github-actions](https://github.com/apps/github-actions)! - upgrade readme
+
+- [#56](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/56) [`c2112a6`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/c2112a66c163c86e4959df3586f900960c77d378) Thanks [@github-actions](https://github.com/apps/github-actions)! - upgrade sdk version
+
+- [#56](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/56) [`e8163ee`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/e8163ee60df5bbc7a76b8f9c86b6c1165b9b321b) Thanks [@github-actions](https://github.com/apps/github-actions)! - add github package
+
+- [#56](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/56) [`15983c9`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/15983c9255f5a7be1c6f117ff837bb4da8bab462) Thanks [@github-actions](https://github.com/apps/github-actions)! - upgrade release
 
 ## 1.0.15
 
