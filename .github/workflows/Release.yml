@@ -57,8 +57,8 @@ jobs:
           pnpm build
       - name: test echo
         run: |
-          echo "${{github.head_ref}} "
-          echo ${{github.event_name}}"
+          echo ${{github.head_ref}}
+          echo ${{github.event_name}}
           echo ${{github.ref_name}}
       - name: 📣 Create Release Pull Request or Publish to npm
         if: github.head_ref == 'changeset-release/main' && github.event_name == 'push'
