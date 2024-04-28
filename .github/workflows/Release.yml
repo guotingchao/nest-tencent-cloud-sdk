@@ -55,7 +55,8 @@ jobs:
         id: build-the-library
         run: |
           pnpm build
-
+      - name: test echo
+        run: echo "${{ github.head_ref }} - ${{ github.event_name }}"
       - name: 📣 Create Release Pull Request or Publish to npm
         if: github.head_ref == 'changeset-release/main' && github.event_name == 'push'
         id: changesets
