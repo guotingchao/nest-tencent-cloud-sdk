@@ -5,6 +5,8 @@ on:
       - develop
       - release/**
       - hotfix/**
+      - support/**
+      - feature/**
 defaults:
   run:
     shell: bash
@@ -58,6 +60,7 @@ jobs:
         run: pnpm run build
 
       - name: 🦋 Create Pull Request
+        if: startsWith(github.ref_name, 'feature/')
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
