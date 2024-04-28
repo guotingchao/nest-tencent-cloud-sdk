@@ -58,7 +58,7 @@ jobs:
         run: |
           pnpm build
       - name: 📣 Create Release Pull Request and Publish new version to Npm
-        if: startsWith(github.head_ref, 'release/')  && github.event_name == 'pull_request'
+        if: github.head_ref == 'develop'  && github.event_name == 'pull_request'
         id: changesets
         uses: changesets/action@v1.4.7
         with:
