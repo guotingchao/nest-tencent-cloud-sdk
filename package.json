@@ -95,7 +95,7 @@
     "access": "public",
     "scope": "@cardbrother",
     "tag": "latest",
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org"
   },
   "bugs": {
     "url": "https://github.com/guotingchao/nest-tencent-cloud-sdk/issues",
