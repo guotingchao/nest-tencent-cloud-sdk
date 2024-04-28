@@ -57,17 +57,18 @@ jobs:
         run: pnpm run test
 
       - name: 📦 Build
+        if: startsWith(github.ref_name, 'release/') || startsWith(github.ref_name, 'hotfix/') || startsWith(github.ref_name, 'support/')
         run: pnpm run build
 
       - name: 🦋 Create Pull Request
-        if: startsWith(github.ref_name, 'feature/')
+        if: startsWith(github.ref_name, 'release/') || startsWith(github.ref_name, 'hotfix/') || startsWith(github.ref_name, 'support/')
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
           base: main
-          title: "Pull Request form Github Actions"
-          body: "This is a pull request created by Actions Robot 🤖"
-          commit-message: "Pull Request ${{ github.head_ref }} into main"
+          title: "🤖 Pull Request form ${{github.ref_name}}"
+          body: "created by Actions Robot 🤖"
+          commit-message: "Pull Request ${{ github.ref_name }} into main"
           labels: "CI"
           assignees: "guotingchao"

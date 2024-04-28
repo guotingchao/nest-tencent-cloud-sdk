@@ -57,7 +57,7 @@ jobs:
         id: build-the-library
         run: |
           pnpm build
-      - name: 📣 Create Release Pull Request or Publish to npm
+      - name: 📣 Create Release Pull Request and Publish to Npm
         if: startsWith(github.head_ref, 'release/')  && github.event_name == 'pull_request'
         id: changesets
         uses: changesets/action@v1.4.7
