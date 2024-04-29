@@ -16,7 +16,7 @@ env:
 jobs:
   release:
     name: 🚀 Release
-    if: github.repository_owner == 'guotingchao' && github.event.pull_request.merged == true
+    # if: github.repository_owner == 'guotingchao' && github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout
@@ -59,6 +59,7 @@ jobs:
         id: build-the-library
         run: |
           pnpm build
+
       - name: 📣 Create Release Pull Request and Publish new version to Npm
         if: github.head_ref == 'develop'  && github.event_name == 'pull_request'
         id: changesets
@@ -71,6 +72,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ env.NPM_TOKEN }}
+
       - name: 🎺 Publish new version to Github Packages
         if: startsWith(github.head_ref, 'changeset-release/main')  && github.event_name == 'pull_request'
         uses: JS-DevTools/npm-publish@v3
