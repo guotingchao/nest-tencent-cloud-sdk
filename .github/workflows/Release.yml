@@ -61,7 +61,7 @@ jobs:
           pnpm build
 
       - name: 📣 Create Release Pull Request and Publish new version to Npm
-        if: github.ref_name == 'develop'  && github.event_name == 'pull_request'
+        if: github.head_ref == 'develop'  && github.event_name == 'pull_request'
         id: changesets
         uses: changesets/action@v1.4.7
         with:
@@ -74,7 +74,7 @@ jobs:
           NPM_TOKEN: ${{ env.NPM_TOKEN }}
 
       - name: 🎺 Publish new version to Github Packages
-        if: startsWith(github.ref_name, 'changeset-release/main')  && github.event_name == 'pull_request'
+        if: startsWith(github.head_ref, 'changeset-release/main')  && github.event_name == 'pull_request'
         uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ env.GITHUB_TOKEN }}
