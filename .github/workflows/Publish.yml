@@ -1,4 +1,4 @@
-name: 🚀 Release
+name: 📦 Publish
 
 on:
   pull_request:
@@ -16,7 +16,7 @@ env:
 jobs:
   release:
     name: 🚀 Release
-    if: github.repository_owner == 'guotingchao' && github.event.pull_request.merged == true && github.ref_name == 'develop'  && github.event_name == 'pull_request'
+    if: github.repository_owner == 'guotingchao' &&  github.event_name == 'pull_request' && github.event.pull_request.merged == true && github.head_ref == 'changeset-release/main'
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout
@@ -60,13 +60,17 @@ jobs:
         run: |
           pnpm build
 
-      - name: 📣 Create Release Pull Request
+      - name: 📣 Create Release Pull Request and Publish new version to Npm
         id: changesets
         uses: changesets/action@v1.4.7
         with:
-          title: "chore(release): publish new version packages 🦋"
-          commit: "chore(release): publish new version packages 🦋 [skip ci]"
-          version: pnpm run publish:version
+          publish: pnpm run publish:release
         env:
           GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ env.NPM_TOKEN }}
+
+      - name: 🎺 Publish new version to Github Packages
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ env.GITHUB_TOKEN }}
+          registry: "https://npm.pkg.github.com"
