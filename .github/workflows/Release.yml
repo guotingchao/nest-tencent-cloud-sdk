@@ -16,7 +16,7 @@ env:
 jobs:
   release:
     name: 🚀 Release
-    if: github.repository_owner == 'guotingchao' && github.event.pull_request.merged == true && github.ref_name == 'develop'  && github.event_name == 'pull_request'
+    if: github.repository_owner == 'guotingchao' && github.event.pull_request.merged == true && github.head_ref == 'develop'  && github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout
