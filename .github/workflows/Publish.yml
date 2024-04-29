@@ -1,11 +1,11 @@
 name: 📦 Publish
 
 on:
-  pull_request_target:
+  pull_request:
     types:
       - closed
     branches:
-      - changeset-release/main
+      - main
   workflow_dispatch:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
@@ -14,9 +14,9 @@ env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
-  release:
-    name: 🚀 Release
-    # if: github.repository_owner == 'guotingchao' &&  github.event_name == 'pull_request' && github.event.pull_request.merged == true && github.head_ref == 'changeset-release/main'
+  Publish:
+    name: 🚀 Publish
+    if: github.repository_owner == 'guotingchao' &&  github.event_name == 'pull_request' && github.event.pull_request.merged == true && github.head_ref == 'changeset-release/main'
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout
@@ -77,7 +77,11 @@ jobs:
           NPM_TOKEN: ${{ env.NPM_TOKEN }}
 
       - name: 🎺 Publish new version to Github Packages
+        id: publish
         uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ env.GITHUB_TOKEN }}
           registry: "https://npm.pkg.github.com"
+
+      - if: ${{ steps.publish.outputs.type }}
+        run: echo "Version changed!"
