@@ -77,7 +77,11 @@ jobs:
           NPM_TOKEN: ${{ env.NPM_TOKEN }}
 
       - name: 🎺 Publish new version to Github Packages
+        id: publish
         uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ env.GITHUB_TOKEN }}
           registry: "https://npm.pkg.github.com"
+
+      - if: ${{ steps.publish.outputs.type }}
+        run: echo "Version changed!"
