@@ -1,5 +1,11 @@
 ## 1.0.16
 
+## 1.0.20
+
+### Patch Changes
+
+- [#71](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/71) [`2bebc45`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/2bebc45b3100eca6de37535f40540629a58a7062) Thanks [@github-actions](https://github.com/apps/github-actions)! - update workflow release action
+
 ## 1.0.19
 
 ### Patch Changes
