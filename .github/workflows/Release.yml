@@ -60,6 +60,13 @@ jobs:
         run: |
           pnpm build
 
+      - name: echo ref
+        run: |
+          echo ${{ github.ref }}
+          echo ${{ github.head_ref }}
+          echo ${{ github.ref_name }}
+          echo ${{ github.base_ref }}
+
       - name: 📣 Create Release Pull Request and Publish new version to Npm
         if: github.head_ref == 'develop'  && github.event_name == 'pull_request'
         id: changesets
