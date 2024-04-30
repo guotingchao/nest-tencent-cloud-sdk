@@ -1,7 +1,9 @@
 name: 📦 Publish
 
 on:
-  push:
+  pull_request:
+    types:
+      - closed
     branches:
       - main
   workflow_dispatch:
@@ -15,7 +17,7 @@ env:
 jobs:
   Publish:
     name: 🚀 Publish
-    if: github.repository_owner == 'guotingchao'
+    if: github.repository_owner == 'guotingchao' && github.event.pull_request.merged == true && github.head_ref == 'changeset-release/main'  && github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout
