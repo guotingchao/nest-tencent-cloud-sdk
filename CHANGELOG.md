@@ -1,5 +1,19 @@
 ## 1.0.16
 
+## 1.0.25
+
+### Patch Changes
+
+- [#87](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/87) [`d273434`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/d2734340c600862748211c8fbf65d2a9020d639e) Thanks [@github-actions](https://github.com/apps/github-actions)! - update workflow
+
+- [#89](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/89) [`f8b61d3`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/f8b61d3bb37b7092acb57d20d0f7c54cfe56e23e) Thanks [@github-actions](https://github.com/apps/github-actions)! - update ci
+
+- [#87](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/87) [`d273434`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/d2734340c600862748211c8fbf65d2a9020d639e) Thanks [@github-actions](https://github.com/apps/github-actions)! - update CI
+
+- [#87](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/87) [`d273434`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/d2734340c600862748211c8fbf65d2a9020d639e) Thanks [@github-actions](https://github.com/apps/github-actions)! - update ci
+
+- [#87](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/87) [`d273434`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/d2734340c600862748211c8fbf65d2a9020d639e) Thanks [@github-actions](https://github.com/apps/github-actions)! - update ci
+
 ## 1.0.24
 
 ### Patch Changes
