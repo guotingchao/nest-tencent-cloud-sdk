@@ -15,7 +15,7 @@ env:
 jobs:
   Publish:
     name: 🚀 Publish
-    if: github.repository_owner == 'guotingchao' && github.head_ref == 'changeset-release/main'
+    if: github.repository_owner == 'guotingchao'
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Checkout
