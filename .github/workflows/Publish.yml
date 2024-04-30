@@ -12,6 +12,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  PAT: ${{ secrets.PAT }}
 
 jobs:
   Publish:
@@ -73,14 +74,14 @@ jobs:
         with:
           publish: pnpm run publish:release
         env:
-          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ env.PAT }}
           NPM_TOKEN: ${{ env.NPM_TOKEN }}
 
       - name: 🎺 Publish new version to Github Packages
         id: publish
         uses: JS-DevTools/npm-publish@v3
         with:
-          token: ${{ env.GITHUB_TOKEN }}
+          token: ${{ env.PAT }}
           registry: "https://npm.pkg.github.com"
 
       - if: ${{ steps.publish.outputs.type }}

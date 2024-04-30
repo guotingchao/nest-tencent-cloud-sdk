@@ -12,6 +12,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  PAT: ${{ secrets.PAT }}
 
 jobs:
   release:
@@ -68,5 +69,5 @@ jobs:
           commit: "chore(release): publish new version packages 🦋 [skip ci]"
           version: pnpm run publish:version
         env:
-          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ env.PAT }}
           NPM_TOKEN: ${{ env.NPM_TOKEN }}
