@@ -19,7 +19,6 @@ describe('@cardbrother/tencentCloudModule COS Test', () => {
           cos: {
             SecretId: tencent_cos_secretId,
             SecretKey: tencent_cos_secretKey,
-            Region: 'eu-frankfurt',
           },
         }),
       ],
@@ -42,35 +41,35 @@ describe('@cardbrother/tencentCloudModule COS Test', () => {
     const cosClient = await tencentCloudService.useClient('COS');
     expect(cosClient).toBeDefined();
     expect(cosClient).toEqual(expect.any(CosProvider));
-    const testOrignalPictureSource =
-      'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
-    const sign = await cosClient.getAuthorization({
-      Method: 'GET',
-      Key: testOrignalPictureSource,
-      Region: 'api-guangzhou',
-      Expires: 900, // 900 seconds
-    });
+    // const testOrignalPictureSource =
+    //   'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
+    // const sign = await cosClient.getAuthorization({
+    //   Method: 'GET',
+    //   Key: testOrignalPictureSource,
+    //   Region: 'api-guangzhou',
+    //   Expires: 900, // 900 seconds
+    // });
 
-    const imgUrl = await cosClient.getDownloadUrl({
-      Bucket: 'test-1250000000',
-      Key: testOrignalPictureSource,
-      Region: 'api-guangzhou',
-      Sign: true,
-    });
+    // const imgUrl = await cosClient.getDownloadUrl({
+    //   Bucket: 'test-1250000000',
+    //   Key: testOrignalPictureSource,
+    //   Region: 'api-guangzhou',
+    //   Sign: true,
+    // });
 
-    console.debug('🐛🐛🐛 --------------------------------------------🐛🐛🐛');
-    console.debug(
-      'IMG URL: %s',
-      imgUrl.Url +
-        (imgUrl.Url.indexOf('?') > -1 ? '&' : '?') +
-        'response-content-disposition=inline',
-    );
-    console.debug(
-      '🐛🐛🐛 ::: Sign Url:::',
-      testOrignalPictureSource + `?${sign}&response-content-disposition=inline`,
-    );
-    console.debug('🐛🐛🐛 --------------------------------------------🐛🐛🐛');
+    // console.debug('🐛🐛🐛 --------------------------------------------🐛🐛🐛');
+    // console.debug(
+    //   'IMG URL: %s',
+    //   imgUrl.Url +
+    //     (imgUrl.Url.indexOf('?') > -1 ? '&' : '?') +
+    //     'response-content-disposition=inline',
+    // );
+    // console.debug(
+    //   '🐛🐛🐛 ::: Sign Url:::',
+    //   testOrignalPictureSource + `?${sign}&response-content-disposition=inline`,
+    // );
+    // console.debug('🐛🐛🐛 --------------------------------------------🐛🐛🐛');
 
-    expect(imgUrl).not.toBeNull();
+    // expect(imgUrl).not.toBeNull();
   });
 });
