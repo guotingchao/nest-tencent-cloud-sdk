@@ -1,5 +1,13 @@
 ## 1.0.16
 
+## 1.0.26
+
+### Patch Changes
+
+- [#90](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/90) [`809517d`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/809517de44cecf0b580c37a6e0ea7c8c94d998c9) Thanks [@github-actions](https://github.com/apps/github-actions)! - Add STS support
+
+- [#90](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/90) [`809517d`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/809517de44cecf0b580c37a6e0ea7c8c94d998c9) Thanks [@github-actions](https://github.com/apps/github-actions)! - update ci
+
 ## 1.0.25
 
 ### Patch Changes
