@@ -161,31 +161,29 @@ cosClient.upload({
 #### **使用 Tencent STS**
 
 ```ts
- const sts_client = await tencentCloudService.useClient(
-      TencentCloudClientType.STS,
-    );
-    expect(sts_client).toBeDefined();
-    expect(sts_client).toBeInstanceOf(StsProvider);
-    const tempSignature = await sts_client.createTemporary({
-      Name: 'Test',
-      Policy: encodeURI(
-        JSON.stringify({
-          version: '2.0',
-          statement: [
-            {
-              effect: 'allow',
-              action: ['name/cos:PutObject'],
-              resource: ['*'],
-            },
-          ],
-        }),
-      ),
-      DurationSeconds: 1800,
-    });
-
-
+const sts_client = await tencentCloudService.useClient(
+  TencentCloudClientType.STS,
+);
+expect(sts_client).toBeDefined();
+expect(sts_client).toBeInstanceOf(StsProvider);
+const tempSignature = await sts_client.createTemporary({
+  Name: 'Test',
+  Policy: encodeURI(
+    JSON.stringify({
+      version: '2.0',
+      statement: [
+        {
+          effect: 'allow',
+          action: ['name/cos:PutObject'],
+          resource: ['*'],
+        },
+      ],
+    }),
+  ),
+  DurationSeconds: 1800,
+});
+```
 
 #### 📝 [CHANGELOG](CHANGELOG.md)
 
 #### License [MIT](https://github.com/guotingchao/nest-tencent-cloud-sdk/blob/main/LICENSE)
-```
