@@ -1,6 +1,6 @@
 {
   "name": "@cardbrother/nestjs-tencent-cloud-sdk",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "description": "nestjs tencent cloud sdk",
