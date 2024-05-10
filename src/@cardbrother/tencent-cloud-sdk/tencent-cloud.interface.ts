@@ -6,6 +6,7 @@ import { ClientProfile } from 'tencentcloud-sdk-nodejs/tencentcloud/common/inter
 import { CosProvider } from './cos/cos.provider';
 import { OcrProvider } from './ocr/ocr.provider';
 import { SmsProvider } from './sms/sms.provider';
+import { StsProvider } from './sts/sts.provider';
 
 // TencentCloudClient interface
 export class TencentCloudAbstructClient extends AbstractClient {
@@ -66,6 +67,7 @@ export enum TencentCloudClientType {
   SMS = 'SMS', // 短信
   OCR = 'OCR', // OCR 图像识别
   COS = 'COS', // 对象存储
+  STS = 'STS', // 临时凭证
 }
 
 /**
@@ -76,6 +78,7 @@ export interface ClientTypeToClassMap {
   SMS: SmsProvider;
   OCR: OcrProvider;
   COS: CosProvider;
+  STS: StsProvider;
 }
 
 export type TencentCloudCosOptions = {

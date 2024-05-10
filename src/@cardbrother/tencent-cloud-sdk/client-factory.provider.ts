@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { CosProvider } from './cos/cos.provider';
 import { OcrProvider } from './ocr/ocr.provider';
 import { SmsProvider } from './sms/sms.provider';
+import { StsProvider } from './sts/sts.provider';
 // assuming these imports are available
 import {
   ClientTypeToClassMap,
@@ -15,6 +16,7 @@ export class ClientFactoryProvider {
     private readonly smsProvider: SmsProvider,
     private readonly ocrProvider: OcrProvider,
     private readonly cosProvider: CosProvider,
+    private readonly stsProvider: StsProvider,
   ) {}
 
   public async createClient<
@@ -30,6 +32,9 @@ export class ClientFactoryProvider {
       case 'COS':
       case TencentCloudClientType.COS:
         return this.cosProvider as ClientTypeToClassMap[T];
+      case 'STS':
+      case TencentCloudClientType.STS:
+        return this.stsProvider as ClientTypeToClassMap[T];
       default:
         throw new Error('Unknown client type: ' + clientType);
     }
