@@ -4,6 +4,7 @@ import { ClientFactoryProvider } from './client-factory.provider';
 import { CosProvider } from './cos/cos.provider';
 import { OcrProvider } from './ocr/ocr.provider';
 import { SmsProvider } from './sms/sms.provider';
+import { StsProvider } from './sts/sts.provider';
 import {
   TENCENT_CLOUD_MODULE_OPTIONS_TOKEN,
   TencentCloudAsyncModuleOptions,
@@ -18,7 +19,13 @@ import { TencentCloudService } from './tencent-cloud.service';
  * @returns {DynamicModule}
  */
 @Module({
-  providers: [TencentCloudService, OcrProvider, SmsProvider, CosProvider],
+  providers: [
+    TencentCloudService,
+    OcrProvider,
+    SmsProvider,
+    CosProvider,
+    StsProvider,
+  ],
   exports: [TencentCloudService],
 })
 export class TencentCloudModule {
