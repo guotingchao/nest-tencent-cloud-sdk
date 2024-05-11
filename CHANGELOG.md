@@ -1,5 +1,25 @@
 ## 1.0.16
 
+## 1.0.29
+
+### Patch Changes
+
+- [#96](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/96) [`4629cea`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/4629ceabbb70a06acd66f0d280b9899ddb526c2e) Thanks [@github-actions](https://github.com/apps/github-actions)! - Add STS support
+
+- [#96](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/96) [`4629cea`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/4629ceabbb70a06acd66f0d280b9899ddb526c2e) Thanks [@github-actions](https://github.com/apps/github-actions)! - update workflow
+
+- [#96](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/96) [`4629cea`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/4629ceabbb70a06acd66f0d280b9899ddb526c2e) Thanks [@github-actions](https://github.com/apps/github-actions)! - update ci
+
+- [#96](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/96) [`4629cea`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/4629ceabbb70a06acd66f0d280b9899ddb526c2e) Thanks [@github-actions](https://github.com/apps/github-actions)! - change the options
+
+- [#96](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/96) [`4629cea`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/4629ceabbb70a06acd66f0d280b9899ddb526c2e) Thanks [@github-actions](https://github.com/apps/github-actions)! - update CI
+
+- [#96](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/96) [`4629cea`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/4629ceabbb70a06acd66f0d280b9899ddb526c2e) Thanks [@github-actions](https://github.com/apps/github-actions)! - update readme
+
+- [#96](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/96) [`4629cea`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/4629ceabbb70a06acd66f0d280b9899ddb526c2e) Thanks [@github-actions](https://github.com/apps/github-actions)! - update ci
+
+- [#96](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/96) [`4629cea`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/4629ceabbb70a06acd66f0d280b9899ddb526c2e) Thanks [@github-actions](https://github.com/apps/github-actions)! - update ci
+
 ## 1.0.28
 
 ### Patch Changes
