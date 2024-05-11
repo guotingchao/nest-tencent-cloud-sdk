@@ -64,7 +64,7 @@ jobs:
           pnpm build
 
       - name: 📣 Create Release Pull Request and Publish new version to Npm
-        id: changesets
+        id: publish
         uses: changesets/action@v1.4.7
         with:
           publish: pnpm run publish:release
@@ -72,12 +72,11 @@ jobs:
           GITHUB_TOKEN: ${{ env.PAT }}
           NPM_TOKEN: ${{ env.NPM_TOKEN }}
 
-      - name: 🎺 Publish new version to Github Packages
-        id: publish
-        uses: JS-DevTools/npm-publish@v3
-        with:
-          token: ${{ env.PAT }}
-          registry: "https://npm.pkg.github.com/guotingchao"
+      # - name: 🎺 Publish new version to Github Packages
+      #   uses: JS-DevTools/npm-publish@v3
+      #   with:
+      #     token: ${{ env.PAT }}
+      #     registry: "@cardbhttps://npm.pkg.github.com/guotingchao"
 
-      - if: ${{ steps.publish.outputs.type }}
-        run: echo "Version changed!"
+      # - if: ${{ steps.publish.outputs.type }}
+      #   run: echo "Version changed!"

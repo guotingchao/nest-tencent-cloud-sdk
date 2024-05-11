@@ -1,5 +1,5 @@
 import { ModuleMetadata, Type } from '@nestjs/common';
-import { StaticGetAuthorizationOptions } from 'cos-nodejs-sdk-v5';
+import COS from 'cos-nodejs-sdk-v5';
 import { AbstractClient } from 'tencentcloud-sdk-nodejs/tencentcloud/common/abstract_client';
 import { ClientProfile } from 'tencentcloud-sdk-nodejs/tencentcloud/common/interface';
 
@@ -42,7 +42,7 @@ export interface TencentCloudModuleOptions {
   region?: string;
   global?: true;
   profile?: ClientProfile;
-  cos?: StaticGetAuthorizationOptions;
+  cos?: COS.COSOptions;
 }
 
 /**
@@ -80,7 +80,3 @@ export interface ClientTypeToClassMap {
   COS: CosProvider;
   STS: StsProvider;
 }
-
-export type TencentCloudCosOptions = {
-  [P in 'SecretId' | 'SecretKey' | 'Region']?: StaticGetAuthorizationOptions[P];
-} & Omit<StaticGetAuthorizationOptions, 'SecretId' | 'SecretKey' | 'Region'>;

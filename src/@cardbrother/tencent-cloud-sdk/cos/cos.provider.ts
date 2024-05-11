@@ -7,13 +7,13 @@ import COS, {
   GetBucketResult,
   GetObjectUrlParams,
   GetObjectUrlResult,
+  StaticGetAuthorizationOptions,
   UploadFileParams,
   UploadFileResult,
 } from 'cos-nodejs-sdk-v5';
 
 import {
   TENCENT_CLOUD_MODULE_OPTIONS_TOKEN,
-  TencentCloudCosOptions,
   TencentCloudModuleOptions,
 } from '../tencent-cloud.interface';
 import { CosAbstructClient, ICosProvider } from './cos.interface';
@@ -47,10 +47,11 @@ export class CosProvider extends CosAbstructClient implements ICosProvider {
   }
 
   public async getAuthorization(
-    options: TencentCloudCosOptions,
+    options: Omit<StaticGetAuthorizationOptions, 'SecretId' | 'SecretKey'>,
   ): Promise<string> {
     return await getAuthorization({
-      ...this.baseCosOption,
+      SecretId: this.options.apiId,
+      SecretKey: this.options.apiSecret,
       ...options,
     });
   }
