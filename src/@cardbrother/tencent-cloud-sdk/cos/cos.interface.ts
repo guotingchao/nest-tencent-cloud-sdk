@@ -5,16 +5,12 @@ import {
   GetBucketResult,
   GetObjectUrlParams,
   GetObjectUrlResult,
-  StaticGetAuthorizationOptions,
   UploadFileParams,
   UploadFileResult,
 } from 'cos-nodejs-sdk-v5';
 import * as COS from 'cos-nodejs-sdk-v5';
 
-import {
-  TencentCloudCosOptions,
-  TencentCloudModuleOptions,
-} from '../tencent-cloud.interface';
+import { TencentCloudModuleOptions } from '../tencent-cloud.interface';
 export interface ICosProvider {
   /**
    * @name 上传文件
@@ -46,7 +42,7 @@ export interface ICosProvider {
    * @param {params}  StaticGetAuthorizationOptions - Cos配置
    * @returns Authorization - 签名对象
    */
-  getAuthorization(options: TencentCloudCosOptions): Promise<string>;
+  getAuthorization(options: COS.StaticGetAuthorizationOptions): Promise<string>;
 
   /**
    * @name GetDownloadUrl
@@ -62,14 +58,13 @@ export interface ICosProvider {
  * @description Cos抽象类
  */
 export class CosAbstructClient {
-  public readonly baseCosOption: StaticGetAuthorizationOptions;
+  public readonly baseCosOption: COS.COSOptions;
   protected readonly cosInstance: COS;
   constructor(options: TencentCloudModuleOptions) {
     this.baseCosOption = options.cos;
     if (this.baseCosOption) {
       this.cosInstance = new COS({
-        SecretId: this.baseCosOption.SecretId,
-        SecretKey: this.baseCosOption.SecretKey,
+        ...this.baseCosOption,
       });
     } else console.warn('cos options is not defined in Module initlization');
   }
