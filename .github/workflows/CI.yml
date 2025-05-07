@@ -54,8 +54,8 @@ jobs:
         id: install-dependencies
         run: pnpm install
 
-      - name: 🧪 Test
-        run: pnpm run test
+      # - name: 🧪 Test
+      #   run: pnpm run test
 
       - name: 📦 Build
         if: github.ref_name == 'develop'

@@ -49,8 +49,8 @@ export interface TencentCloudModuleOptions {
  */
 export interface TencentCloudAsyncModuleOptions<T extends TencentCloudModuleOptions>
   extends Pick<ModuleMetadata, 'imports'> {
-  useFactory: (...args: any[]) => Promise<T> | T;
-  inject?: any[];
+  useFactory?: (...args: unknown[]) => Promise<T> | T;
+  inject?: unknown[];
   useClass?: Type<T>;
   useExisting?: Type<T>;
   global?: boolean;

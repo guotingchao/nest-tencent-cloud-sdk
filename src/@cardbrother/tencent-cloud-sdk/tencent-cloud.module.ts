@@ -1,4 +1,10 @@
-import { DynamicModule, Module, Provider } from '@nestjs/common';
+import {
+  DynamicModule,
+  InjectionToken,
+  Module,
+  OptionalFactoryDependency,
+  Provider,
+} from '@nestjs/common';
 
 import { ClientFactoryProvider } from './client-factory.provider';
 import { CosProvider } from './cos/cos.provider';
@@ -19,13 +25,7 @@ import { TencentCloudService } from './tencent-cloud.service';
  * @returns {DynamicModule}
  */
 @Module({
-  providers: [
-    TencentCloudService,
-    OcrProvider,
-    SmsProvider,
-    CosProvider,
-    StsProvider,
-  ],
+  providers: [TencentCloudService, OcrProvider, SmsProvider, CosProvider, StsProvider],
   exports: [TencentCloudService],
 })
 export class TencentCloudModule {
@@ -54,7 +54,7 @@ export class TencentCloudModule {
     options: TencentCloudAsyncModuleOptions<TencentCloudModuleOptions>,
   ): Promise<DynamicModule> {
     const isGlobal = options.global || false;
-    return {
+    return await {
       module: TencentCloudModule,
       imports: options.imports || [],
       providers: [
@@ -92,7 +92,7 @@ export class TencentCloudModule {
       return {
         provide: TENCENT_CLOUD_MODULE_OPTIONS_TOKEN,
         useFactory: options.useFactory,
-        inject: options.inject || [],
+        inject: options.inject as (InjectionToken | OptionalFactoryDependency)[],
       };
     }
     return {
