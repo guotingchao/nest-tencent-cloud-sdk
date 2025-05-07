@@ -32,8 +32,8 @@ export const TENCENT_CLOUD_MODULE_OPTIONS_TOKEN = 'TENCENT_CLOUD_MODULE_OPTIONS_
  * @description TencentCloudModuleOptions is an interface for the options that can be passed to the `forRoot` method of the `TencentCloudModule`.
  */
 export interface TencentCloudModuleOptions {
-  apiId: string;
-  apiSecret: string;
+  apiId?: string;
+  apiSecret?: string;
   region?: string;
   global?: true;
   profile?: ClientProfile;
