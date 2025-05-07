@@ -1,5 +1,25 @@
 ## 1.0.16
 
+## 1.0.31
+
+### Patch Changes
+
+- [#100](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/100) [`decf64a`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/decf64a1db4cf11f7bb65ddf35a485b8b4bcb423) Thanks [@guotingchao](https://github.com/guotingchao)! - Add STS support
+
+- [#100](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/100) [`decf64a`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/decf64a1db4cf11f7bb65ddf35a485b8b4bcb423) Thanks [@guotingchao](https://github.com/guotingchao)! - update workflow
+
+- [#100](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/100) [`decf64a`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/decf64a1db4cf11f7bb65ddf35a485b8b4bcb423) Thanks [@guotingchao](https://github.com/guotingchao)! - update ci
+
+- [#100](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/100) [`decf64a`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/decf64a1db4cf11f7bb65ddf35a485b8b4bcb423) Thanks [@guotingchao](https://github.com/guotingchao)! - change the options
+
+- [#100](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/100) [`decf64a`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/decf64a1db4cf11f7bb65ddf35a485b8b4bcb423) Thanks [@guotingchao](https://github.com/guotingchao)! - update CI
+
+- [#100](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/100) [`decf64a`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/decf64a1db4cf11f7bb65ddf35a485b8b4bcb423) Thanks [@guotingchao](https://github.com/guotingchao)! - update readme
+
+- [#100](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/100) [`decf64a`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/decf64a1db4cf11f7bb65ddf35a485b8b4bcb423) Thanks [@guotingchao](https://github.com/guotingchao)! - update ci
+
+- [#100](https://github.com/guotingchao/nest-tencent-cloud-sdk/pull/100) [`decf64a`](https://github.com/guotingchao/nest-tencent-cloud-sdk/commit/decf64a1db4cf11f7bb65ddf35a485b8b4bcb423) Thanks [@guotingchao](https://github.com/guotingchao)! - update ci
+
 ## 1.0.30
 
 ### Patch Changes
