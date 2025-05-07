@@ -24,8 +24,7 @@ describe('@cardbrother/tencentCloudModule COS Test', () => {
       ],
     }).compile();
 
-    tencentCloudService =
-      moduleFixture.get<TencentCloudService>(TencentCloudService);
+    tencentCloudService = moduleFixture.get<TencentCloudService>(TencentCloudService);
   });
 
   it('should be defined', () => {
