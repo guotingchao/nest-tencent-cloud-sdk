@@ -10,11 +10,7 @@ import { StsProvider } from './sts/sts.provider';
 
 // TencentCloudClient interface
 export class TencentCloudAbstructClient extends AbstractClient {
-  constructor(
-    endpoint: string,
-    version: string,
-    options: TencentCloudModuleOptions,
-  ) {
+  constructor(endpoint: string, version: string, options: TencentCloudModuleOptions) {
     super(endpoint, version, {
       credential: {
         secretId: options.apiId,
@@ -27,8 +23,7 @@ export class TencentCloudAbstructClient extends AbstractClient {
 }
 
 // TencentCloudModuleTokenKey for options
-export const TENCENT_CLOUD_MODULE_OPTIONS_TOKEN =
-  'TENCENT_CLOUD_MODULE_OPTIONS_TOKEN';
+export const TENCENT_CLOUD_MODULE_OPTIONS_TOKEN = 'TENCENT_CLOUD_MODULE_OPTIONS_TOKEN';
 /**
  * @name TencentCloudModuleOptions
  * @param {string} apiKey The API key for the Tencent Cloud service.
@@ -37,8 +32,8 @@ export const TENCENT_CLOUD_MODULE_OPTIONS_TOKEN =
  * @description TencentCloudModuleOptions is an interface for the options that can be passed to the `forRoot` method of the `TencentCloudModule`.
  */
 export interface TencentCloudModuleOptions {
-  apiId?: string;
-  apiSecret?: string;
+  apiId: string;
+  apiSecret: string;
   region?: string;
   global?: true;
   profile?: ClientProfile;
@@ -52,9 +47,8 @@ export interface TencentCloudModuleOptions {
  * @param {Array} inject The dependencies that will be injected into the factory function.
  * @returns {Promise<TencentCloudModuleOptions> | TencentCloudModuleOptions}
  */
-export interface TencentCloudAsyncModuleOptions<
-  T extends TencentCloudModuleOptions,
-> extends Pick<ModuleMetadata, 'imports'> {
+export interface TencentCloudAsyncModuleOptions<T extends TencentCloudModuleOptions>
+  extends Pick<ModuleMetadata, 'imports'> {
   useFactory: (...args: any[]) => Promise<T> | T;
   inject?: any[];
   useClass?: Type<T>;

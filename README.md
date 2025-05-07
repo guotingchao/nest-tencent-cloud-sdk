@@ -156,6 +156,12 @@ cosClient.upload({
   Body: 'hello world',
   FilePath: 'test.txt',
 });
+
+cosClient.uploadByBase64({
+  Bucket: this.options.cos.Bucket, // It's not required. Default use the configuration at the Module Import time
+  Region: this.options.cos.Region, // It's not required. Default use the configuration at the Module Import time
+  Key: 'test.txt',
+});
 ```
 
 #### **Usage Tencent STS**
