@@ -1,22 +1,25 @@
 import { Inject, Injectable } from '@nestjs/common';
-import COS, {
-  DownloadFileParams,
-  DownloadFileResult,
+import type COS from 'cos-nodejs-sdk-v5';
+import {
+  type DownloadFileParams,
+  type DownloadFileResult,
   getAuthorization,
-  GetBucketParams,
-  GetBucketResult,
-  GetObjectUrlParams,
-  GetObjectUrlResult,
-  StaticGetAuthorizationOptions,
-  UploadFileParams,
-  UploadFileResult,
+  type GetBucketParams,
+  type GetBucketResult,
+  type GetObjectUrlParams,
+  type GetObjectUrlResult,
+  PutObjectParams,
+  PutObjectResult,
+  type StaticGetAuthorizationOptions,
+  type UploadFileParams,
+  type UploadFileResult,
 } from 'cos-nodejs-sdk-v5';
 
 import {
   TENCENT_CLOUD_MODULE_OPTIONS_TOKEN,
-  TencentCloudModuleOptions,
+  type TencentCloudModuleOptions,
 } from '../tencent-cloud.interface';
-import { CosAbstructClient, ICosProvider } from './cos.interface';
+import { CosAbstructClient, type ICosProvider } from './cos.interface';
 
 @Injectable()
 export class CosProvider extends CosAbstructClient implements ICosProvider {
@@ -60,11 +63,16 @@ export class CosProvider extends CosAbstructClient implements ICosProvider {
     return await this.cosInstance.uploadFile(params);
   }
 
-  public async download(
-    params: DownloadFileParams,
-  ): Promise<DownloadFileResult> {
+  public async uploadByBase64(params: PutObjectParams): Promise<PutObjectResult> {
+    return await this.cosInstance.putObject({
+      ...params,
+    });
+  }
+
+  public async download(params: DownloadFileParams): Promise<DownloadFileResult> {
     return await this.cosInstance.downloadFile(params);
   }
+
   public async fetchList(params: GetBucketParams): Promise<GetBucketResult> {
     return await this.cosInstance.getBucket(params);
   }

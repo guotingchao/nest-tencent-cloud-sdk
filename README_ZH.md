@@ -156,6 +156,13 @@ cosClient.upload({
   Body: 'hello world',
   FilePath: 'test.txt',
 });
+
+cosClient.uploadByBase64({
+  Bucket: this.options.cos.Bucket, // It's not required. Default use the configuration at the Module Import time
+  Region: this.options.cos.Region, // It's not required. Default use the configuration at the Module Import time
+  Key: '1.png',  // 存储在桶里的对象键（例如1.jpg，a/b/test.txt），必须字段
+  Body: body, // base64 to Blob 需要转为Blob上传，必须字段
+});
 ```
 
 #### **使用 Tencent STS**

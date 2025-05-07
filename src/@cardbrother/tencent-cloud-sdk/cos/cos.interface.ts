@@ -1,4 +1,4 @@
-import {
+import type {
   DownloadFileParams,
   DownloadFileResult,
   GetBucketParams,
@@ -10,7 +10,7 @@ import {
 } from 'cos-nodejs-sdk-v5';
 import * as COS from 'cos-nodejs-sdk-v5';
 
-import { TencentCloudModuleOptions } from '../tencent-cloud.interface';
+import type { TencentCloudModuleOptions } from '../tencent-cloud.interface';
 export interface ICosProvider {
   /**
    * @name 上传文件
@@ -61,6 +61,9 @@ export class CosAbstructClient {
   public readonly baseCosOption: COS.COSOptions;
   protected readonly cosInstance: COS;
   constructor(options: TencentCloudModuleOptions) {
+    if (!options.cos) {
+      throw new Error('cos options is not defined in Module initlization');
+    }
     this.baseCosOption = options.cos;
     if (this.baseCosOption) {
       this.cosInstance = new COS({
